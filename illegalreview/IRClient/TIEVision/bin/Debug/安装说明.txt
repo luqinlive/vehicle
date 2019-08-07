@@ -1,0 +1,19 @@
+1.安装dotNetFx45_full_x86_x64.exe
+2.安装MSVBCRT_AIO_2017.03.13_X86_X64.exe依赖库
+3.安装Mongodb
+  1）解压到D盘或者其他盘，不带中文目录
+  2）打开MongoDB_Installation文件夹
+  3）管理员权限运行MongoDB-RunCommandLine.bat，初始化完配置文件后关闭
+  4）管理员权限运行MongoDB-ServiceInstall.bat安装服务
+  5）管理员权限运行MongoDB-ServiceStart.bat启动服务
+4.安装单机版
+  1）解压TIEVision
+  2）管理员权限运行ServiceInstall.bat，安装服务
+  3）如果需要改变目录，需先管理员权限执行ServiceUnInstall.bat，移动到目录后再管理员权限执行ServiceInstall.bat
+5.启动TIEVision.exe
+6.如遇视频无法播放或不分析，尝试更新Nvidia显卡驱动到最新版本
+
+使用注意：
+  1.抓拍机模式
+    1）添加设想头勾选抓拍机
+    2）TIEVision.ini修改参数抓拍机FTP上传路径
