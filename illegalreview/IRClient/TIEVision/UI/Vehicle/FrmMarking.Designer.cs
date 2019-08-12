@@ -31,6 +31,7 @@
             this.simpleButtonChoosePic = new DevExpress.XtraEditors.SimpleButton();
             this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.simpleButtonRefresh = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonSave = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
@@ -41,7 +42,7 @@
             this.pictureEdit4 = new DevExpress.XtraEditors.PictureEdit();
             this.pictureEdit3 = new DevExpress.XtraEditors.PictureEdit();
             this.pictureEdit2 = new DevExpress.XtraEditors.PictureEdit();
-            this.simpleButtonRefresh = new DevExpress.XtraEditors.SimpleButton();
+            this.checkEditZebra = new DevExpress.XtraEditors.CheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -51,13 +52,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit4.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEditZebra.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // simpleButtonChoosePic
             // 
             this.simpleButtonChoosePic.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.simpleButtonChoosePic.Appearance.Options.UseFont = true;
-            this.simpleButtonChoosePic.Location = new System.Drawing.Point(461, 25);
+            this.simpleButtonChoosePic.Location = new System.Drawing.Point(491, 24);
             this.simpleButtonChoosePic.Name = "simpleButtonChoosePic";
             this.simpleButtonChoosePic.Size = new System.Drawing.Size(84, 24);
             this.simpleButtonChoosePic.TabIndex = 2;
@@ -79,6 +81,7 @@
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.checkEditZebra);
             this.panelControl1.Controls.Add(this.simpleButtonRefresh);
             this.panelControl1.Controls.Add(this.simpleButtonSave);
             this.panelControl1.Controls.Add(this.labelControl3);
@@ -99,11 +102,22 @@
             this.panelControl1.TabIndex = 4;
             this.panelControl1.Resize += new System.EventHandler(this.panelControl1_Resize);
             // 
+            // simpleButtonRefresh
+            // 
+            this.simpleButtonRefresh.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.simpleButtonRefresh.Appearance.Options.UseFont = true;
+            this.simpleButtonRefresh.Location = new System.Drawing.Point(868, 26);
+            this.simpleButtonRefresh.Name = "simpleButtonRefresh";
+            this.simpleButtonRefresh.Size = new System.Drawing.Size(84, 24);
+            this.simpleButtonRefresh.TabIndex = 14;
+            this.simpleButtonRefresh.Text = "刷新";
+            this.simpleButtonRefresh.Click += new System.EventHandler(this.simpleButtonRefresh_Click);
+            // 
             // simpleButtonSave
             // 
             this.simpleButtonSave.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.simpleButtonSave.Appearance.Options.UseFont = true;
-            this.simpleButtonSave.Location = new System.Drawing.Point(754, 26);
+            this.simpleButtonSave.Location = new System.Drawing.Point(777, 26);
             this.simpleButtonSave.Name = "simpleButtonSave";
             this.simpleButtonSave.Size = new System.Drawing.Size(84, 24);
             this.simpleButtonSave.TabIndex = 13;
@@ -113,15 +127,15 @@
             // labelControl3
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl3.Location = new System.Drawing.Point(560, 29);
+            this.labelControl3.Location = new System.Drawing.Point(607, 29);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(42, 17);
+            this.labelControl3.Size = new System.Drawing.Size(47, 17);
             this.labelControl3.TabIndex = 12;
-            this.labelControl3.Text = "通道数";
+            this.labelControl3.Text = "通道数:";
             // 
             // comboBoxEdit1
             // 
-            this.comboBoxEdit1.Location = new System.Drawing.Point(628, 28);
+            this.comboBoxEdit1.Location = new System.Drawing.Point(657, 28);
             this.comboBoxEdit1.Name = "comboBoxEdit1";
             this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -131,15 +145,15 @@
             // labelControl2
             // 
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl2.Location = new System.Drawing.Point(23, 29);
+            this.labelControl2.Location = new System.Drawing.Point(16, 29);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(28, 17);
+            this.labelControl2.Size = new System.Drawing.Size(33, 17);
             this.labelControl2.TabIndex = 10;
-            this.labelControl2.Text = "通道";
+            this.labelControl2.Text = "通道:";
             // 
             // comboBoxEditCross
             // 
-            this.comboBoxEditCross.Location = new System.Drawing.Point(67, 26);
+            this.comboBoxEditCross.Location = new System.Drawing.Point(54, 26);
             this.comboBoxEditCross.Name = "comboBoxEditCross";
             this.comboBoxEditCross.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxEditCross.Properties.Appearance.Options.UseFont = true;
@@ -153,20 +167,20 @@
             // labelControl1
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl1.Location = new System.Drawing.Point(255, 28);
+            this.labelControl1.Location = new System.Drawing.Point(237, 28);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(84, 17);
+            this.labelControl1.Size = new System.Drawing.Size(89, 17);
             this.labelControl1.TabIndex = 8;
-            this.labelControl1.Text = "高度裁剪距离";
+            this.labelControl1.Text = "高度裁剪距离:";
             // 
             // textEdit_CropHeight
             // 
             this.textEdit_CropHeight.EditValue = "54";
-            this.textEdit_CropHeight.Location = new System.Drawing.Point(345, 25);
+            this.textEdit_CropHeight.Location = new System.Drawing.Point(327, 25);
             this.textEdit_CropHeight.Name = "textEdit_CropHeight";
             this.textEdit_CropHeight.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textEdit_CropHeight.Properties.Appearance.Options.UseFont = true;
-            this.textEdit_CropHeight.Size = new System.Drawing.Size(100, 24);
+            this.textEdit_CropHeight.Size = new System.Drawing.Size(46, 24);
             this.textEdit_CropHeight.TabIndex = 7;
             // 
             // pictureEdit4
@@ -201,16 +215,16 @@
             this.pictureEdit2.TabIndex = 4;
             this.pictureEdit2.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureEdit2_Paint);
             // 
-            // simpleButtonRefresh
+            // checkEditZebra
             // 
-            this.simpleButtonRefresh.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.simpleButtonRefresh.Appearance.Options.UseFont = true;
-            this.simpleButtonRefresh.Location = new System.Drawing.Point(853, 26);
-            this.simpleButtonRefresh.Name = "simpleButtonRefresh";
-            this.simpleButtonRefresh.Size = new System.Drawing.Size(84, 24);
-            this.simpleButtonRefresh.TabIndex = 14;
-            this.simpleButtonRefresh.Text = "刷新";
-            this.simpleButtonRefresh.Click += new System.EventHandler(this.simpleButtonRefresh_Click);
+            this.checkEditZebra.EditValue = true;
+            this.checkEditZebra.Location = new System.Drawing.Point(379, 27);
+            this.checkEditZebra.Name = "checkEditZebra";
+            this.checkEditZebra.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkEditZebra.Properties.Appearance.Options.UseFont = true;
+            this.checkEditZebra.Properties.Caption = "是否有斑马线";
+            this.checkEditZebra.Size = new System.Drawing.Size(106, 21);
+            this.checkEditZebra.TabIndex = 15;
             // 
             // FrmMarking
             // 
@@ -231,6 +245,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit4.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEditZebra.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -251,5 +266,6 @@
         private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit1;
         private DevExpress.XtraEditors.SimpleButton simpleButtonSave;
         private DevExpress.XtraEditors.SimpleButton simpleButtonRefresh;
+        private DevExpress.XtraEditors.CheckEdit checkEditZebra;
     }
 }
