@@ -152,12 +152,29 @@ namespace TIEVision.UI.Vehicle
                     Polygons.Add(StopLine);
 
                     //ZebraCrossing
-                    ZebraCross.Clear();
-                    ZebraCross.Add(new Point(padding, ((height / 4) * 2)));
-                    ZebraCross.Add(new Point(padding + lane_wrap * 3, ((height / 4) * 2)));
-                    ZebraCross.Add(new Point(padding + lane_wrap * 3, ((height / 4) * 3-20)));
-                    ZebraCross.Add(new Point(padding , ((height / 4) * 3-20)));
-                    Polygons.Add(ZebraCross);
+                   
+                    if (checkEditZebra.Checked != true)
+                    {
+                        ZebraCross.Clear();
+                        //ZebraCross.Add(new Point(0,0));
+                        //ZebraCross.Add(new Point(0, 0));
+                        //ZebraCross.Add(new Point(0, 0));
+                        //ZebraCross.Add(new Point(0, 0));
+                        ZebraCross.Add(new Point(-10, -1));
+                        ZebraCross.Add(new Point(-10, -1));
+                        ZebraCross.Add(new Point(-10, -1));
+                        ZebraCross.Add(new Point(-10, -1));
+                        Polygons.Add(ZebraCross);
+                    }
+                    else
+                    {
+                        ZebraCross.Clear();
+                        ZebraCross.Add(new Point(padding, ((height / 4) * 2)));
+                        ZebraCross.Add(new Point(padding + lane_wrap * 3, ((height / 4) * 2)));
+                        ZebraCross.Add(new Point(padding + lane_wrap * 3, ((height / 4) * 3 - 20)));
+                        ZebraCross.Add(new Point(padding, ((height / 4) * 3 - 20)));
+                        Polygons.Add(ZebraCross);
+                    }
 
                     //TrafficLights
                     TrafficLights.Clear();
@@ -765,11 +782,23 @@ namespace TIEVision.UI.Vehicle
                     List<Point> mPicmZebraCrossingPoints = ScreenPointToPicture(mZebraCrossing);
                     if(mPicmZebraCrossingPoints.Count == 4 )
                     {
-                        config.ZebraCrossing = new List<string>();
+                        config.ZebraCrossing = new ZebraCrossing();
+                        config.ZebraCrossing.HaveLine = 1;
+                        config.ZebraCrossing.TrafficPoints=  new List<string>();
                         for(int n = 0;n < mPicmZebraCrossingPoints.Count ;n++)
                         {
                             string point1 = mPicmZebraCrossingPoints[n].X + "," + mPicmZebraCrossingPoints[n].Y;
-                            config.ZebraCrossing.Add(point1);
+                            if (checkEditZebra.Checked ==true)
+                            {
+                                config.ZebraCrossing.HaveLine = 1;
+                                config.ZebraCrossing.TrafficPoints.Add(point1);
+                            }
+                            else
+                            {
+                                config.ZebraCrossing.HaveLine = 0;
+                                config.ZebraCrossing.TrafficPoints.Add("0,0");
+                            }
+                           
                         }
                     }
                 }
@@ -889,23 +918,32 @@ namespace TIEVision.UI.Vehicle
 
                         //ZebraCrossing
                         ZebraCross.Clear();
-                        positionArr = dbConfig.ZebraCrossing[0].Split(',');
+                        positionArr = dbConfig.ZebraCrossing.TrafficPoints[0].Split(',');
                         position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
                         ZebraCross.Add(PicturePointToScreen(new Point(position.X, position.Y)));
 
-                        positionArr = dbConfig.ZebraCrossing[1].Split(',');
+                        positionArr = dbConfig.ZebraCrossing.TrafficPoints[1].Split(',');
                         position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
                         ZebraCross.Add(PicturePointToScreen(new Point(position.X, position.Y)));
 
-                        positionArr = dbConfig.ZebraCrossing[2].Split(',');
+                        positionArr = dbConfig.ZebraCrossing.TrafficPoints[2].Split(',');
                         position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
                         ZebraCross.Add(PicturePointToScreen(new Point(position.X, position.Y)));
 
-                        positionArr = dbConfig.ZebraCrossing[3].Split(',');
+                        positionArr = dbConfig.ZebraCrossing.TrafficPoints[3].Split(',');
                         position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
                         ZebraCross.Add(PicturePointToScreen(new Point(position.X, position.Y)));
 
                         Polygons.Add(ZebraCross);
+
+                        if (dbConfig.ZebraCrossing.HaveLine == 1)
+                        {
+                            checkEditZebra.Checked = true;
+                        }
+                        else
+                        {
+                            checkEditZebra.Checked = false;
+                        }
 
                         ////TrafficLights
                         TrafficLights.Clear();

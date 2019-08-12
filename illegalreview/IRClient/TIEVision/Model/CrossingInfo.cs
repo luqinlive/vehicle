@@ -22,7 +22,7 @@ namespace IRVision.Model
         public long CropHeight { get; set; }
         public LaneLine LaneLine { get; set; }
         public List<string> StopLine { get; set; }
-        public List<string> ZebraCrossing { get; set; }
+        public ZebraCrossing ZebraCrossing { get; set; }
         public List<string> TrafficLight { get; set; }
     }
 
@@ -36,6 +36,12 @@ namespace IRVision.Model
     {
         public string StartPoint { get; set; }
         public string EndPoint { get; set; }
+    }
+
+    public partial class ZebraCrossing
+    {
+        public long HaveLine { get; set; }
+        public List<string> TrafficPoints { get; set; }
     }
 
      
