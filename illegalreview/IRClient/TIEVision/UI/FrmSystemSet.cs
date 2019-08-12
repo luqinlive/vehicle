@@ -36,7 +36,7 @@ namespace TIEVision
                 labelControl1.Visible = false;
                 labelControl2.Visible = false;
             }
-            loadData();
+            //loadData();
         }
 
         private void loadData()

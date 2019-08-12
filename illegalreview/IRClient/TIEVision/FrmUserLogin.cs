@@ -83,12 +83,12 @@ namespace TIEVision
                 XtraMessageBox.Show("用户名或密码不能为空!");
                 return;
             }
-            CheckAdminUser();
+            //CheckAdminUser();
             UserInfo userInfo = new UserInfo();
             userInfo.UserName = userName;
             userInfo.Password = EncodeHelper.DesEncrypt(password);
-            //if (userName=="admin"&& password =="admin")
-            if (MongoHelper.GetInstance().CheckUserLogin(userInfo))
+            if (userName=="admin"&& password =="admin")
+            //if (MongoHelper.GetInstance().CheckUserLogin(userInfo))
             {
                 
                 this.Hide();
