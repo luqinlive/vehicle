@@ -276,6 +276,12 @@
     <Compile Include="UI\Vehicle\FrmMarking.Designer.cs">
       <DependentUpon>FrmMarking.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Vehicle\FrmMarkingSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Vehicle\FrmMarkingSet.Designer.cs">
+      <DependentUpon>FrmMarkingSet.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Vehicle\FrmVehChoosePic.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -340,6 +346,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Vehicle\FrmMarking.resx">
       <DependentUpon>FrmMarking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Vehicle\FrmMarkingSet.resx">
+      <DependentUpon>FrmMarkingSet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Vehicle\FrmVehChoosePic.resx">
       <DependentUpon>FrmVehChoosePic.cs</DependentUpon>
