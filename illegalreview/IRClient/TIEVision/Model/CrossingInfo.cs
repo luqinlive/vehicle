@@ -19,6 +19,8 @@ namespace IRVision.Model
 
     public class CrossConfig
     {
+        public long ScreenMode { get; set; }
+        public long LaneNumber { get; set; }
         public long CropHeight { get; set; }
         public LaneLine LaneLine { get; set; }
         public StopLine StopLine { get; set; }

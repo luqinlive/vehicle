@@ -26,6 +26,8 @@ namespace TIEVision.Model
     {
         public static List<HSysDictInfo> dictListMblx = new List<HSysDictInfo>();
         public static List<HSysDictInfo> mMbysList = new List<HSysDictInfo>();
+        public List<HSysDictInfo> mScreenModeList = new List<HSysDictInfo>();
+        public List<HSysDictInfo> mLaneNumberList = new List<HSysDictInfo>();
         private static TargetTypeList mContext = null;
         TargetTypeList()
         {
@@ -74,7 +76,7 @@ namespace TIEVision.Model
             item.SYSDICT_NAME = "中小巴";
             dictListMblx.Add(item);
 
-            
+
 
             {
                 HSysDictInfo model = new HSysDictInfo();
@@ -156,6 +158,50 @@ namespace TIEVision.Model
                 model.SYSDICT_ID = "546"; model.SYSDICT_TYPE = "1106"; model.SYSDICT_CODE = "5"; model.SYSDICT_NAME = "灰白"; model.FLAG = 1;
                 mMbysList.Add(model);
             }
+            //ScreenMode
+            {
+                HSysDictInfo model = new HSysDictInfo();
+                model.SYSDICT_CODE = "1"; model.SYSDICT_NAME = "一分屏";
+                mScreenModeList.Add(model);
+            }
+            {
+                HSysDictInfo model = new HSysDictInfo();
+                model.SYSDICT_CODE = "2"; model.SYSDICT_NAME = "二分屏";
+                mScreenModeList.Add(model);
+            }
+            {
+                HSysDictInfo model = new HSysDictInfo();
+                model.SYSDICT_CODE = "3"; model.SYSDICT_NAME = "三分屏";
+                mScreenModeList.Add(model);
+            }
+            {
+                HSysDictInfo model = new HSysDictInfo();
+                model.SYSDICT_CODE = "4"; model.SYSDICT_NAME = "四分屏";
+                mScreenModeList.Add(model);
+            }
+
+            //LaneNumber
+            {
+                HSysDictInfo model = new HSysDictInfo();
+                model.SYSDICT_CODE = "1"; model.SYSDICT_NAME = "一车道";
+                mLaneNumberList.Add(model);
+            }
+            {
+                HSysDictInfo model = new HSysDictInfo();
+                model.SYSDICT_CODE = "2"; model.SYSDICT_NAME = "二车道";
+                mLaneNumberList.Add(model);
+            }
+            {
+                HSysDictInfo model = new HSysDictInfo();
+                model.SYSDICT_CODE = "3"; model.SYSDICT_NAME = "三车道";
+                mLaneNumberList.Add(model);
+            }
+            {
+                HSysDictInfo model = new HSysDictInfo();
+                model.SYSDICT_CODE = "4"; model.SYSDICT_NAME = "四车道";
+                mLaneNumberList.Add(model);
+            }
+
         }
 
         ~TargetTypeList()
@@ -181,6 +227,8 @@ namespace TIEVision.Model
         {
             return mMbysList;
         }
+
+
         
     }
 }

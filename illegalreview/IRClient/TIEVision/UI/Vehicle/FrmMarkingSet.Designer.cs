@@ -30,8 +30,8 @@
         {
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.comboBoxEditCross = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.comboBoxEditScreenMode = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.comboBoxEditLaneNumber = new DevExpress.XtraEditors.ComboBoxEdit();
             this.checkEditZebra = new DevExpress.XtraEditors.CheckEdit();
             this.checkEditTrafficLights = new DevExpress.XtraEditors.CheckEdit();
             this.checkEditLaneLine = new DevExpress.XtraEditors.CheckEdit();
@@ -69,8 +69,8 @@
             this.simpleBtnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit_CropHeight = new DevExpress.XtraEditors.TextEdit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditCross.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditScreenMode.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditLaneNumber.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditZebra.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditTrafficLights.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditLaneLine.Properties)).BeginInit();
@@ -113,45 +113,37 @@
             // labelControl2
             // 
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl2.Location = new System.Drawing.Point(27, 80);
+            this.labelControl2.Location = new System.Drawing.Point(27, 89);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(70, 17);
             this.labelControl2.TabIndex = 1;
             this.labelControl2.Text = "车道个数：";
             // 
-            // comboBoxEditCross
+            // comboBoxEditScreenMode
             // 
-            this.comboBoxEditCross.EditValue = "四分屏";
-            this.comboBoxEditCross.Location = new System.Drawing.Point(103, 20);
-            this.comboBoxEditCross.Name = "comboBoxEditCross";
-            this.comboBoxEditCross.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxEditCross.Properties.Appearance.Options.UseFont = true;
-            this.comboBoxEditCross.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.comboBoxEditScreenMode.EditValue = "";
+            this.comboBoxEditScreenMode.Location = new System.Drawing.Point(103, 20);
+            this.comboBoxEditScreenMode.Name = "comboBoxEditScreenMode";
+            this.comboBoxEditScreenMode.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxEditScreenMode.Properties.Appearance.Options.UseFont = true;
+            this.comboBoxEditScreenMode.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEditCross.Properties.Items.AddRange(new object[] {
-            "四分屏",
-            "两分屏"});
-            this.comboBoxEditCross.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.comboBoxEditCross.Size = new System.Drawing.Size(160, 24);
-            this.comboBoxEditCross.TabIndex = 10;
+            this.comboBoxEditScreenMode.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.comboBoxEditScreenMode.Size = new System.Drawing.Size(160, 24);
+            this.comboBoxEditScreenMode.TabIndex = 10;
             // 
-            // comboBoxEdit1
+            // comboBoxEditLaneNumber
             // 
-            this.comboBoxEdit1.EditValue = "三车道";
-            this.comboBoxEdit1.Location = new System.Drawing.Point(103, 77);
-            this.comboBoxEdit1.Name = "comboBoxEdit1";
-            this.comboBoxEdit1.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxEdit1.Properties.Appearance.Options.UseFont = true;
-            this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.comboBoxEditLaneNumber.EditValue = "";
+            this.comboBoxEditLaneNumber.Location = new System.Drawing.Point(103, 86);
+            this.comboBoxEditLaneNumber.Name = "comboBoxEditLaneNumber";
+            this.comboBoxEditLaneNumber.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxEditLaneNumber.Properties.Appearance.Options.UseFont = true;
+            this.comboBoxEditLaneNumber.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit1.Properties.Items.AddRange(new object[] {
-            "一车道",
-            "两车道",
-            "三车道",
-            "四车道"});
-            this.comboBoxEdit1.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.comboBoxEdit1.Size = new System.Drawing.Size(160, 24);
-            this.comboBoxEdit1.TabIndex = 11;
+            this.comboBoxEditLaneNumber.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.comboBoxEditLaneNumber.Size = new System.Drawing.Size(160, 24);
+            this.comboBoxEditLaneNumber.TabIndex = 11;
             // 
             // checkEditZebra
             // 
@@ -304,7 +296,7 @@
             // labelControl7
             // 
             this.labelControl7.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl7.Location = new System.Drawing.Point(330, 80);
+            this.labelControl7.Location = new System.Drawing.Point(330, 89);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(70, 17);
             this.labelControl7.TabIndex = 31;
@@ -312,7 +304,7 @@
             // 
             // checkEdit9
             // 
-            this.checkEdit9.Location = new System.Drawing.Point(408, 50);
+            this.checkEdit9.Location = new System.Drawing.Point(408, 59);
             this.checkEdit9.Name = "checkEdit9";
             this.checkEdit9.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkEdit9.Properties.Appearance.Options.UseFont = true;
@@ -322,7 +314,7 @@
             // 
             // checkEdit10
             // 
-            this.checkEdit10.Location = new System.Drawing.Point(518, 50);
+            this.checkEdit10.Location = new System.Drawing.Point(518, 59);
             this.checkEdit10.Name = "checkEdit10";
             this.checkEdit10.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkEdit10.Properties.Appearance.Options.UseFont = true;
@@ -332,7 +324,7 @@
             // 
             // checkEdit11
             // 
-            this.checkEdit11.Location = new System.Drawing.Point(628, 50);
+            this.checkEdit11.Location = new System.Drawing.Point(628, 59);
             this.checkEdit11.Name = "checkEdit11";
             this.checkEdit11.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkEdit11.Properties.Appearance.Options.UseFont = true;
@@ -342,7 +334,7 @@
             // 
             // checkEdit12
             // 
-            this.checkEdit12.Location = new System.Drawing.Point(738, 50);
+            this.checkEdit12.Location = new System.Drawing.Point(738, 59);
             this.checkEdit12.Name = "checkEdit12";
             this.checkEdit12.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkEdit12.Properties.Appearance.Options.UseFont = true;
@@ -353,7 +345,7 @@
             // comboBoxEdit2
             // 
             this.comboBoxEdit2.EditValue = "";
-            this.comboBoxEdit2.Location = new System.Drawing.Point(406, 77);
+            this.comboBoxEdit2.Location = new System.Drawing.Point(406, 86);
             this.comboBoxEdit2.Name = "comboBoxEdit2";
             this.comboBoxEdit2.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxEdit2.Properties.Appearance.Options.UseFont = true;
@@ -366,7 +358,7 @@
             // comboBoxEdit3
             // 
             this.comboBoxEdit3.EditValue = "";
-            this.comboBoxEdit3.Location = new System.Drawing.Point(516, 77);
+            this.comboBoxEdit3.Location = new System.Drawing.Point(516, 86);
             this.comboBoxEdit3.Name = "comboBoxEdit3";
             this.comboBoxEdit3.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxEdit3.Properties.Appearance.Options.UseFont = true;
@@ -379,7 +371,7 @@
             // comboBoxEdit4
             // 
             this.comboBoxEdit4.EditValue = "";
-            this.comboBoxEdit4.Location = new System.Drawing.Point(626, 77);
+            this.comboBoxEdit4.Location = new System.Drawing.Point(626, 86);
             this.comboBoxEdit4.Name = "comboBoxEdit4";
             this.comboBoxEdit4.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxEdit4.Properties.Appearance.Options.UseFont = true;
@@ -392,7 +384,7 @@
             // comboBoxEdit5
             // 
             this.comboBoxEdit5.EditValue = "";
-            this.comboBoxEdit5.Location = new System.Drawing.Point(736, 77);
+            this.comboBoxEdit5.Location = new System.Drawing.Point(736, 86);
             this.comboBoxEdit5.Name = "comboBoxEdit5";
             this.comboBoxEdit5.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxEdit5.Properties.Appearance.Options.UseFont = true;
@@ -507,7 +499,7 @@
             // 
             this.simpleBtnSave.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.simpleBtnSave.Appearance.Options.UseFont = true;
-            this.simpleBtnSave.Location = new System.Drawing.Point(299, 319);
+            this.simpleBtnSave.Location = new System.Drawing.Point(355, 312);
             this.simpleBtnSave.Name = "simpleBtnSave";
             this.simpleBtnSave.Size = new System.Drawing.Size(75, 23);
             this.simpleBtnSave.TabIndex = 49;
@@ -518,7 +510,7 @@
             // 
             this.simpleBtnCancel.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.simpleBtnCancel.Appearance.Options.UseFont = true;
-            this.simpleBtnCancel.Location = new System.Drawing.Point(406, 319);
+            this.simpleBtnCancel.Location = new System.Drawing.Point(462, 312);
             this.simpleBtnCancel.Name = "simpleBtnCancel";
             this.simpleBtnCancel.Size = new System.Drawing.Size(75, 23);
             this.simpleBtnCancel.TabIndex = 50;
@@ -530,9 +522,9 @@
             this.labelControl9.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl9.Location = new System.Drawing.Point(330, 210);
             this.labelControl9.Name = "labelControl9";
-            this.labelControl9.Size = new System.Drawing.Size(61, 17);
+            this.labelControl9.Size = new System.Drawing.Size(70, 17);
             this.labelControl9.TabIndex = 52;
-            this.labelControl9.Text = "裁剪高度:";
+            this.labelControl9.Text = "裁剪高度：";
             // 
             // textEdit_CropHeight
             // 
@@ -586,15 +578,17 @@
             this.Controls.Add(this.checkEditLaneLine);
             this.Controls.Add(this.checkEditTrafficLights);
             this.Controls.Add(this.checkEditZebra);
-            this.Controls.Add(this.comboBoxEdit1);
-            this.Controls.Add(this.comboBoxEditCross);
+            this.Controls.Add(this.comboBoxEditLaneNumber);
+            this.Controls.Add(this.comboBoxEditScreenMode);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.labelControl1);
+            this.MaximizeBox = false;
             this.Name = "FrmMarkingSet";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "参数设置";
             this.Load += new System.EventHandler(this.FrmMarkingSet_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditCross.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditScreenMode.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditLaneNumber.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditZebra.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditTrafficLights.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditLaneLine.Properties)).EndInit();
@@ -632,8 +626,8 @@
 
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEditCross;
-        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit1;
+        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEditScreenMode;
+        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEditLaneNumber;
         private DevExpress.XtraEditors.CheckEdit checkEditZebra;
         private DevExpress.XtraEditors.CheckEdit checkEditTrafficLights;
         private DevExpress.XtraEditors.CheckEdit checkEditLaneLine;

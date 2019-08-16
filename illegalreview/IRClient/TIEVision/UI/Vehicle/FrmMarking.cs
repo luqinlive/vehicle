@@ -88,24 +88,50 @@ namespace TIEVision.UI.Vehicle
             // Convert.ToInt32(textEdit_CropHeight.Text.ToString());
             int cropHeight = frmMarkingSet.nCropHeight;
             Image selectedImage = mCurOperateImage;
-            int cloneWidth = selectedImage.Width / 2;
-            int cloneHeight = (selectedImage.Height - cropHeight) / 2;
+            if (null != selectedImage)
+            {
+                // 4分屏
+                if (frmMarkingSet.nScreenMode == 4)
+                {
+                    int cloneWidth = selectedImage.Width / 2;
+                    int cloneHeight = (selectedImage.Height - cropHeight) / 2;
 
-            Rectangle cropRect = new Rectangle(0, cropHeight, cloneWidth, cloneHeight);
-            Image img1 = cropImage(selectedImage, cropRect);
-            cropRect = new Rectangle(cloneWidth, cropHeight, cloneWidth, cloneHeight);
-            Image img2 = cropImage(selectedImage, cropRect);
-            cropRect = new Rectangle(0, cloneHeight + cropHeight, cloneWidth, cloneHeight);
-            Image img3 = cropImage(selectedImage, cropRect);
-            cropRect = new Rectangle(cloneWidth, cloneHeight + cropHeight, cloneWidth, cloneHeight);
-            Image img4 = cropImage(selectedImage, cropRect);
-            pictureEdit1.Image = img1;
-            pictureEdit2.Image = img2;
-            pictureEdit3.Image = img3;
-            pictureEdit4.Image = img4;
+                    Rectangle cropRect = new Rectangle(0, cropHeight, cloneWidth, cloneHeight);
+                    Image img1 = cropImage(selectedImage, cropRect);
+                    cropRect = new Rectangle(cloneWidth, cropHeight, cloneWidth, cloneHeight);
+                    Image img2 = cropImage(selectedImage, cropRect);
+                    cropRect = new Rectangle(0, cloneHeight + cropHeight, cloneWidth, cloneHeight);
+                    Image img3 = cropImage(selectedImage, cropRect);
+                    cropRect = new Rectangle(cloneWidth, cloneHeight + cropHeight, cloneWidth, cloneHeight);
+                    Image img4 = cropImage(selectedImage, cropRect);
+                    pictureEdit1.Image = img1;
+                    pictureEdit2.Image = img2;
+                    pictureEdit3.Image = img3;
+                    pictureEdit4.Image = img4;
 
-            scaleX = (double)img1.Width / (double)pictureEdit1.Width;
-            scaleY = (double)img1.Height / (double)pictureEdit1.Height;
+                    scaleX = (double)img1.Width / (double)pictureEdit1.Width;
+                    scaleY = (double)img1.Height / (double)pictureEdit1.Height;
+                }
+                else
+                {
+                    //2分屏
+                    int cloneWidth = selectedImage.Width / 2;
+                    int cloneHeight = (selectedImage.Height - cropHeight);
+
+                    Rectangle cropRect = new Rectangle(0, cropHeight, cloneWidth, cloneHeight);
+                    Image img1 = cropImage(selectedImage, cropRect);
+                    cropRect = new Rectangle(cloneWidth, cropHeight, cloneWidth, cloneHeight);
+                    Image img2 = cropImage(selectedImage, cropRect);
+                    pictureEdit1.Image = img1;
+                    pictureEdit2.Image = img2;
+                    pictureEdit3.Image = null;
+                    pictureEdit4.Image = null;
+                    scaleX = (double)img1.Width / (double)pictureEdit1.Width;
+                    scaleY = (double)img1.Height / (double)pictureEdit1.Height;
+                }
+                
+            }
+           
         }
 
 
@@ -578,30 +604,34 @@ namespace TIEVision.UI.Vehicle
 
         private void pictureEdit3_Paint(object sender, PaintEventArgs e)
         {
-            e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-            //e.Graphics.Clear(pictureEdit1.BackColor);
-
-            // Draw the old polygons.
-            foreach (List<Point> polygon in Polygons)
+            if(frmMarkingSet.nScreenMode == 4 )
             {
-                // Draw the polygon.
-                e.Graphics.FillPolygon(Brushes.Transparent, polygon.ToArray());
-                e.Graphics.DrawPolygon(Pens.Blue, polygon.ToArray());
+                e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+                //e.Graphics.Clear(pictureEdit1.BackColor);
 
-
-                // Draw the corners.
-                foreach (Point corner in polygon)
+                // Draw the old polygons.
+                foreach (List<Point> polygon in Polygons)
                 {
-                    Rectangle rect = new Rectangle(
-                        corner.X - object_radius, corner.Y - object_radius,
-                        2 * object_radius + 1, 2 * object_radius + 1);
-                    //e.Graphics.FillEllipse(Brushes.White, rect);
-                    //e.Graphics.DrawEllipse(Pens.Black, rect);
-                    e.Graphics.FillRectangle(Brushes.White, rect);
-                    e.Graphics.DrawRectangle(Pens.Black, rect);
+                    // Draw the polygon.
+                    e.Graphics.FillPolygon(Brushes.Transparent, polygon.ToArray());
+                    e.Graphics.DrawPolygon(Pens.Blue, polygon.ToArray());
 
+
+                    // Draw the corners.
+                    foreach (Point corner in polygon)
+                    {
+                        Rectangle rect = new Rectangle(
+                            corner.X - object_radius, corner.Y - object_radius,
+                            2 * object_radius + 1, 2 * object_radius + 1);
+                        //e.Graphics.FillEllipse(Brushes.White, rect);
+                        //e.Graphics.DrawEllipse(Pens.Black, rect);
+                        e.Graphics.FillRectangle(Brushes.White, rect);
+                        e.Graphics.DrawRectangle(Pens.Black, rect);
+
+                    }
                 }
             }
+            
 
         }
 
@@ -646,6 +676,8 @@ namespace TIEVision.UI.Vehicle
             int cropHeight = 0;
             cropHeight = frmMarkingSet.nCropHeight;
             config.CropHeight = cropHeight;// Convert.ToInt32(textEdit_CropHeight.Text.ToString());
+            config.ScreenMode = frmMarkingSet.nScreenMode;
+            config.LaneNumber = frmMarkingSet.nLaneNumber;
             for(int i=0; i< Polygons.Count ;i++)
             {
                 //LaneLine
@@ -842,31 +874,32 @@ namespace TIEVision.UI.Vehicle
             int nIndex = comboBoxEditCross.SelectedIndex;
             if (nIndex >= 0)
             {
-
                 var crossInfo = mCrossingList[nIndex];
-
-
-                if (!string.IsNullOrEmpty(crossInfo.IMAGE_DATA))
-                {
-                    Image decodeImage = Base64Util.GetImageFromBase64(crossInfo.IMAGE_DATA);
-                    mCurOperateImage = decodeImage;
-                    cutImage();
-                }
-                else
-                {
-                    //Clear image from picture control
-                    pictureEdit1.Image = null;
-                    pictureEdit2.Image = null;
-                    pictureEdit3.Image = null;
-                    pictureEdit4.Image = null;
-                }
-
 
                 if (!string.IsNullOrEmpty(crossInfo.CROSSING_CONFIG))
                 {
                     CrossConfig dbConfig = JsonConvert.DeserializeObject<CrossConfig>(crossInfo.CROSSING_CONFIG);
                     if (null != dbConfig)
                     {
+                        //ScreenMode 
+                        frmMarkingSet.nScreenMode = Convert.ToInt32(dbConfig.ScreenMode);
+                        frmMarkingSet.nLaneNumber = Convert.ToInt32(dbConfig.LaneNumber);
+                        
+                        if (!string.IsNullOrEmpty(crossInfo.IMAGE_DATA))
+                        {
+                            Image decodeImage = Base64Util.GetImageFromBase64(crossInfo.IMAGE_DATA);
+                            mCurOperateImage = decodeImage;
+                            cutImage();
+                        }
+                        else
+                        {
+                            //Clear image from picture control
+                            pictureEdit1.Image = null;
+                            pictureEdit2.Image = null;
+                            pictureEdit3.Image = null;
+                            pictureEdit4.Image = null;
+                        }
+
                         //LaneLine
                         //0
                         LaneLines.Clear();
@@ -1023,6 +1056,11 @@ namespace TIEVision.UI.Vehicle
             frmMarkingSet.ShowDialog();
             if (frmMarkingSet.DialogResult == System.Windows.Forms.DialogResult.OK)
             {
+                //resize image 
+                if(frmMarkingSet.nCropHeight >=0 )
+                {
+                    cutImage();
+                }
                 int nHaveLaneLine = frmMarkingSet.nHaveLaneLine;
                 for (int i = 0; i < Polygons.Count; i++)
                 {

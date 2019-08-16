@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TIEVision.Model;
 
 namespace IRVision.UI.Vehicle
 {
@@ -21,6 +22,10 @@ namespace IRVision.UI.Vehicle
         public CrossConfig mCrossConfig { get; set; }
         public CrossingInfo mCrossInfo { get; set; }
         public int nCropHeight { get; set; }
+        public int nScreenMode { get; set; }
+        public int nLaneNumber { get; set; }
+        public List<HSysDictInfo> mScreenModeList = new List<HSysDictInfo>();
+        public List<HSysDictInfo> mLaneNumberList = new List<HSysDictInfo>();
 
         public FrmMarkingSet()
         {
@@ -29,11 +34,30 @@ namespace IRVision.UI.Vehicle
 
         private void FrmMarkingSet_Load(object sender, EventArgs e)
         {
+            nScreenMode = 4;
+            nLaneNumber = 3;
             nHaveLaneLine = 1;
             nHaveStopLine = 1;
             nHaveTrafficLights = 1;
             nHaveZebra = 1;
             nCropHeight = 0;
+
+            mScreenModeList = TargetTypeList.GetInstance().mScreenModeList;
+            comboBoxEditScreenMode.Properties.Items.Clear();
+            foreach(var screenMode in mScreenModeList)
+            {
+                comboBoxEditScreenMode.Properties.Items.Add(screenMode.SYSDICT_NAME);
+            }
+            //comboBoxEditScreenMode.SelectedIndex = 3;
+
+            mLaneNumberList = TargetTypeList.GetInstance().mLaneNumberList;
+            comboBoxEditLaneNumber.Properties.Items.Clear();
+            foreach (var laneNumber in mLaneNumberList)
+            {
+                comboBoxEditLaneNumber.Properties.Items.Add(laneNumber.SYSDICT_NAME);
+            }
+            //comboBoxEditLaneNumber.SelectedIndex = 2;
+
         }
 
         public void SetControlStatus()
@@ -74,7 +98,7 @@ namespace IRVision.UI.Vehicle
 
             if(null!= mCrossConfig)
             {
-               
+                textEdit_CropHeight.Text = mCrossConfig.CropHeight + "" ;
             }
             if(null != mCrossInfo)
             {
@@ -82,6 +106,23 @@ namespace IRVision.UI.Vehicle
                 textEditCrossID.Text = mCrossInfo.CROSSING_ID;
             }
 
+            for(int i = 0 ;i< mScreenModeList.Count(); i++)
+            {
+                if(mScreenModeList[i].SYSDICT_CODE == nScreenMode+"")
+                {
+                    comboBoxEditScreenMode.SelectedIndex = i;
+                    break;
+                }
+            }
+
+            for (int i = 0; i < mLaneNumberList.Count(); i++)
+            {
+                if (mLaneNumberList[i].SYSDICT_CODE == nLaneNumber+"")
+                {
+                    comboBoxEditLaneNumber.SelectedIndex = i;
+                    break;
+                }
+            }
         }
 
         private void simpleBtnSave_Click(object sender, EventArgs e)
@@ -126,7 +167,21 @@ namespace IRVision.UI.Vehicle
                 this.nHaveZebra = 0;
             }
 
-            nCropHeight = Convert.ToInt32(textEdit_CropHeight.ToString());
+            if (comboBoxEditScreenMode.SelectedIndex >=0)
+            {
+                int nIndex = comboBoxEditScreenMode.SelectedIndex;
+                nScreenMode = Convert.ToInt32(mScreenModeList[nIndex].SYSDICT_CODE);
+            }
+
+
+            if (comboBoxEditLaneNumber.SelectedIndex >= 0)
+            {
+                int nIndex = comboBoxEditLaneNumber.SelectedIndex;
+                nLaneNumber = Convert.ToInt32(mLaneNumberList[nIndex].SYSDICT_CODE);
+            }
+
+
+            nCropHeight = Convert.ToInt32(textEdit_CropHeight.Text.ToString());
 
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.Close();
