@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors;
+using IRVision.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +18,9 @@ namespace IRVision.UI.Vehicle
         public int nHaveStopLine { get; set; }
         public int nHaveTrafficLights { get; set; }
         public int nHaveZebra { get; set; }
+        public CrossConfig mCrossConfig { get; set; }
+        public CrossingInfo mCrossInfo { get; set; }
+        public int nCropHeight { get; set; }
 
         public FrmMarkingSet()
         {
@@ -29,6 +33,7 @@ namespace IRVision.UI.Vehicle
             nHaveStopLine = 1;
             nHaveTrafficLights = 1;
             nHaveZebra = 1;
+            nCropHeight = 0;
         }
 
         public void SetControlStatus()
@@ -67,7 +72,18 @@ namespace IRVision.UI.Vehicle
                 checkEditZebra.Checked = false;
             }
 
+            if(null!= mCrossConfig)
+            {
+               
+            }
+            if(null != mCrossInfo)
+            {
+                textEditCrossName.Text = mCrossInfo.CROSSING_NAME;
+                textEditCrossID.Text = mCrossInfo.CROSSING_ID;
+            }
+
         }
+
         private void simpleBtnSave_Click(object sender, EventArgs e)
         {
             //LaneLine
@@ -109,6 +125,8 @@ namespace IRVision.UI.Vehicle
             {
                 this.nHaveZebra = 0;
             }
+
+            nCropHeight = Convert.ToInt32(textEdit_CropHeight.ToString());
 
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.Close();

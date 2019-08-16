@@ -35,8 +35,6 @@
             this.simpleButtonSave = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.comboBoxEditCross = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit_CropHeight = new DevExpress.XtraEditors.TextEdit();
             this.pictureEdit4 = new DevExpress.XtraEditors.PictureEdit();
             this.pictureEdit3 = new DevExpress.XtraEditors.PictureEdit();
             this.pictureEdit2 = new DevExpress.XtraEditors.PictureEdit();
@@ -45,7 +43,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditCross.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit_CropHeight.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit4.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit2.Properties)).BeginInit();
@@ -55,7 +52,7 @@
             // 
             this.simpleButtonChoosePic.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.simpleButtonChoosePic.Appearance.Options.UseFont = true;
-            this.simpleButtonChoosePic.Location = new System.Drawing.Point(523, 26);
+            this.simpleButtonChoosePic.Location = new System.Drawing.Point(310, 26);
             this.simpleButtonChoosePic.Name = "simpleButtonChoosePic";
             this.simpleButtonChoosePic.Size = new System.Drawing.Size(84, 24);
             this.simpleButtonChoosePic.TabIndex = 2;
@@ -82,8 +79,6 @@
             this.panelControl1.Controls.Add(this.simpleButtonSave);
             this.panelControl1.Controls.Add(this.labelControl2);
             this.panelControl1.Controls.Add(this.comboBoxEditCross);
-            this.panelControl1.Controls.Add(this.labelControl1);
-            this.panelControl1.Controls.Add(this.textEdit_CropHeight);
             this.panelControl1.Controls.Add(this.pictureEdit4);
             this.panelControl1.Controls.Add(this.pictureEdit3);
             this.panelControl1.Controls.Add(this.pictureEdit2);
@@ -100,7 +95,7 @@
             // 
             this.simpleButtonRefresh.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.simpleButtonRefresh.Appearance.Options.UseFont = true;
-            this.simpleButtonRefresh.Location = new System.Drawing.Point(751, 26);
+            this.simpleButtonRefresh.Location = new System.Drawing.Point(490, 26);
             this.simpleButtonRefresh.Name = "simpleButtonRefresh";
             this.simpleButtonRefresh.Size = new System.Drawing.Size(84, 24);
             this.simpleButtonRefresh.TabIndex = 14;
@@ -111,7 +106,7 @@
             // 
             this.simpleButtonSave.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.simpleButtonSave.Appearance.Options.UseFont = true;
-            this.simpleButtonSave.Location = new System.Drawing.Point(637, 26);
+            this.simpleButtonSave.Location = new System.Drawing.Point(400, 26);
             this.simpleButtonSave.Name = "simpleButtonSave";
             this.simpleButtonSave.Size = new System.Drawing.Size(84, 24);
             this.simpleButtonSave.TabIndex = 13;
@@ -139,25 +134,6 @@
             this.comboBoxEditCross.Size = new System.Drawing.Size(160, 24);
             this.comboBoxEditCross.TabIndex = 9;
             this.comboBoxEditCross.SelectedIndexChanged += new System.EventHandler(this.comboBoxEditCross_SelectedIndexChanged);
-            // 
-            // labelControl1
-            // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl1.Location = new System.Drawing.Point(237, 28);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(89, 17);
-            this.labelControl1.TabIndex = 8;
-            this.labelControl1.Text = "高度裁剪距离:";
-            // 
-            // textEdit_CropHeight
-            // 
-            this.textEdit_CropHeight.EditValue = "54";
-            this.textEdit_CropHeight.Location = new System.Drawing.Point(327, 25);
-            this.textEdit_CropHeight.Name = "textEdit_CropHeight";
-            this.textEdit_CropHeight.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textEdit_CropHeight.Properties.Appearance.Options.UseFont = true;
-            this.textEdit_CropHeight.Size = new System.Drawing.Size(46, 24);
-            this.textEdit_CropHeight.TabIndex = 7;
             // 
             // pictureEdit4
             // 
@@ -195,7 +171,7 @@
             // 
             this.simpleBtnParams.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.simpleBtnParams.Appearance.Options.UseFont = true;
-            this.simpleBtnParams.Location = new System.Drawing.Point(409, 26);
+            this.simpleBtnParams.Location = new System.Drawing.Point(220, 26);
             this.simpleBtnParams.Name = "simpleBtnParams";
             this.simpleBtnParams.Size = new System.Drawing.Size(84, 24);
             this.simpleBtnParams.TabIndex = 16;
@@ -216,7 +192,6 @@
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditCross.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit_CropHeight.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit4.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit2.Properties)).EndInit();
@@ -232,8 +207,6 @@
         private DevExpress.XtraEditors.PictureEdit pictureEdit2;
         private DevExpress.XtraEditors.PictureEdit pictureEdit4;
         private DevExpress.XtraEditors.PictureEdit pictureEdit3;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.TextEdit textEdit_CropHeight;
         private DevExpress.XtraEditors.ComboBoxEdit comboBoxEditCross;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.SimpleButton simpleButtonSave;

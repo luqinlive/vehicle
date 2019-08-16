@@ -45,8 +45,8 @@
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
+            this.textEditCrossName = new DevExpress.XtraEditors.TextEdit();
+            this.textEditCrossID = new DevExpress.XtraEditors.TextEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.checkEdit9 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit10 = new DevExpress.XtraEditors.CheckEdit();
@@ -80,8 +80,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit6.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit7.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit8.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditCrossName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditCrossID.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit9.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit10.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit11.Properties)).BeginInit();
@@ -283,23 +283,23 @@
             this.labelControl6.TabIndex = 28;
             this.labelControl6.Text = "通道编号：";
             // 
-            // textEdit1
+            // textEditCrossName
             // 
-            this.textEdit1.Location = new System.Drawing.Point(406, 20);
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textEdit1.Properties.Appearance.Options.UseFont = true;
-            this.textEdit1.Size = new System.Drawing.Size(152, 24);
-            this.textEdit1.TabIndex = 29;
+            this.textEditCrossName.Location = new System.Drawing.Point(406, 20);
+            this.textEditCrossName.Name = "textEditCrossName";
+            this.textEditCrossName.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textEditCrossName.Properties.Appearance.Options.UseFont = true;
+            this.textEditCrossName.Size = new System.Drawing.Size(152, 24);
+            this.textEditCrossName.TabIndex = 29;
             // 
-            // textEdit2
+            // textEditCrossID
             // 
-            this.textEdit2.Location = new System.Drawing.Point(682, 20);
-            this.textEdit2.Name = "textEdit2";
-            this.textEdit2.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textEdit2.Properties.Appearance.Options.UseFont = true;
-            this.textEdit2.Size = new System.Drawing.Size(152, 24);
-            this.textEdit2.TabIndex = 30;
+            this.textEditCrossID.Location = new System.Drawing.Point(682, 20);
+            this.textEditCrossID.Name = "textEditCrossID";
+            this.textEditCrossID.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textEditCrossID.Properties.Appearance.Options.UseFont = true;
+            this.textEditCrossID.Size = new System.Drawing.Size(152, 24);
+            this.textEditCrossID.TabIndex = 30;
             // 
             // labelControl7
             // 
@@ -530,18 +530,18 @@
             this.labelControl9.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl9.Location = new System.Drawing.Point(330, 210);
             this.labelControl9.Name = "labelControl9";
-            this.labelControl9.Size = new System.Drawing.Size(89, 17);
+            this.labelControl9.Size = new System.Drawing.Size(61, 17);
             this.labelControl9.TabIndex = 52;
-            this.labelControl9.Text = "高度裁剪距离:";
+            this.labelControl9.Text = "裁剪高度:";
             // 
             // textEdit_CropHeight
             // 
             this.textEdit_CropHeight.EditValue = "0";
-            this.textEdit_CropHeight.Location = new System.Drawing.Point(420, 207);
+            this.textEdit_CropHeight.Location = new System.Drawing.Point(406, 207);
             this.textEdit_CropHeight.Name = "textEdit_CropHeight";
             this.textEdit_CropHeight.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textEdit_CropHeight.Properties.Appearance.Options.UseFont = true;
-            this.textEdit_CropHeight.Size = new System.Drawing.Size(46, 24);
+            this.textEdit_CropHeight.Size = new System.Drawing.Size(94, 24);
             this.textEdit_CropHeight.TabIndex = 51;
             // 
             // FrmMarkingSet
@@ -571,8 +571,8 @@
             this.Controls.Add(this.checkEdit10);
             this.Controls.Add(this.checkEdit9);
             this.Controls.Add(this.labelControl7);
-            this.Controls.Add(this.textEdit2);
-            this.Controls.Add(this.textEdit1);
+            this.Controls.Add(this.textEditCrossID);
+            this.Controls.Add(this.textEditCrossName);
             this.Controls.Add(this.labelControl6);
             this.Controls.Add(this.labelControl5);
             this.Controls.Add(this.labelControl4);
@@ -604,8 +604,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit6.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit7.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit8.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditCrossName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditCrossID.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit9.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit10.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit11.Properties)).EndInit();
@@ -647,8 +647,8 @@
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.LabelControl labelControl6;
-        private DevExpress.XtraEditors.TextEdit textEdit1;
-        private DevExpress.XtraEditors.TextEdit textEdit2;
+        private DevExpress.XtraEditors.TextEdit textEditCrossName;
+        private DevExpress.XtraEditors.TextEdit textEditCrossID;
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.CheckEdit checkEdit9;
         private DevExpress.XtraEditors.CheckEdit checkEdit10;

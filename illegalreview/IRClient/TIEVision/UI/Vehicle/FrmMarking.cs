@@ -85,7 +85,8 @@ namespace TIEVision.UI.Vehicle
 
         private void cutImage()
         {
-            int cropHeight = Convert.ToInt32(textEdit_CropHeight.Text.ToString());
+            // Convert.ToInt32(textEdit_CropHeight.Text.ToString());
+            int cropHeight = frmMarkingSet.nCropHeight;
             Image selectedImage = mCurOperateImage;
             int cloneWidth = selectedImage.Width / 2;
             int cloneHeight = (selectedImage.Height - cropHeight) / 2;
@@ -642,7 +643,9 @@ namespace TIEVision.UI.Vehicle
         {
             CrossingInfo crossing = new CrossingInfo();
             CrossConfig config = new CrossConfig();
-            config.CropHeight = Convert.ToInt32(textEdit_CropHeight.Text.ToString());
+            int cropHeight = 0;
+            cropHeight = frmMarkingSet.nCropHeight;
+            config.CropHeight = cropHeight;// Convert.ToInt32(textEdit_CropHeight.Text.ToString());
             for(int i=0; i< Polygons.Count ;i++)
             {
                 //LaneLine
@@ -993,8 +996,10 @@ namespace TIEVision.UI.Vehicle
                         }
 
                         //Change control status
+                        frmMarkingSet.mCrossInfo = crossInfo;
+                        frmMarkingSet.mCrossConfig = dbConfig;
                         frmMarkingSet.SetControlStatus();
-
+                        
                     }
                 }
                 
