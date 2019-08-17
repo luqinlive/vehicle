@@ -28,7 +28,10 @@ namespace TIEVision.UI.Vehicle
         List<Point> LaneLines = new List<Point>();
         List<Point> StopLine = new List<Point>();
         List<Point> ZebraCross = new List<Point>();
-        List<Point> TrafficLights = new List<Point>();
+        List<Point> TrafficLights1 = new List<Point>();
+        List<Point> TrafficLights2 = new List<Point>();
+        List<Point> TrafficLights3 = new List<Point>();
+        List<Point> TrafficLights4= new List<Point>();
         double scaleX = 0.0f;
         double scaleY = 0.0f;
         private Image mCurOperateImage = null;
@@ -42,9 +45,15 @@ namespace TIEVision.UI.Vehicle
 
         private void FrmMarking_Load(object sender, EventArgs e)
         {
+            FrmCrossing.ShowCrossInfo += new FrmCrossing.ShowCrossEventHandler(ShowMsgInfo);
             AddPointCursor = new Cursor(IRVision.Properties.Resources.add_point.GetHicon());
 
             InitParams();
+            loadData();
+        }
+
+        private void ShowMsgInfo(string msg )
+        {
             loadData();
         }
 
@@ -57,6 +66,12 @@ namespace TIEVision.UI.Vehicle
             frmMarkingSet.nHaveTrafficLights = 1;
             frmMarkingSet.nHaveZebra = 1;
             frmMarkingSet.nCropHeight = 0;
+
+            frmMarkingSet.nTrafficNumber1 = 1;
+            frmMarkingSet.nTrafficNumber2 = 0;
+            frmMarkingSet.nTrafficNumber3 = 0;
+            frmMarkingSet.nTrafficNumber4 = 0;
+
             frmMarkingSet.SetControlStatus();
         }
 
@@ -908,34 +923,158 @@ namespace TIEVision.UI.Vehicle
                     List<Point> mPicTrafficLightsPoints = ScreenPointToPicture(mTrafficLights);
                     if (mPicTrafficLightsPoints.Count == 4)
                     {
-                        config.TrafficLight = new TrafficLight();
+                        if (config.TrafficLight == null)
+                        {
+                            config.TrafficLight = new TrafficLight();
+                        }
                         if (frmMarkingSet.nHaveTrafficLights == 1)
                         {
                             config.TrafficLight.HaveLine = 1;
-                            config.TrafficLight.TrafficLine = new List<TrafficLine>();
-                            TrafficLine trafficLine = new TrafficLine();
-                            trafficLine.Points = new List<string>();
-                            for (int n = 0; n < mPicTrafficLightsPoints.Count; n++)
+                            if (config.TrafficLight.TrafficLine == null )
                             {
-                                string point1 = mPicTrafficLightsPoints[n].X + "," + mPicTrafficLightsPoints[n].Y;
-                                trafficLine.Points.Add(point1);
+                                config.TrafficLight.TrafficLine = new List<TrafficLine>();
+                            }
+                            if(frmMarkingSet.nTrafficNumber1 ==1 && i == 3)
+                            {
+                                TrafficLine trafficLine = new TrafficLine();
+                                trafficLine.TraffcLightNumber = 1;
+                                trafficLine.TraffcLightType = "";
+                                trafficLine.Points = new List<string>();
+                                for (int n = 0; n < mPicTrafficLightsPoints.Count; n++)
+                                {
+                                    string point1 = mPicTrafficLightsPoints[n].X + "," + mPicTrafficLightsPoints[n].Y;
+                                    trafficLine.Points.Add(point1);
+
+                                }
+                                config.TrafficLight.TrafficLine.Add(trafficLine);
+                            }
+                            else if(frmMarkingSet.nTrafficNumber1 ==0 && i == 3)
+                            {
+                                TrafficLine trafficLine = new TrafficLine();
+                                trafficLine.TraffcLightNumber = 1;
+                                trafficLine.TraffcLightType = "";
+                                trafficLine.Points = new List<string>();
+                                for (int n = 0; n < mPicTrafficLightsPoints.Count; n++)
+                                {
+                                    string point1 =  "-10,-10"  ;
+                                    trafficLine.Points.Add(point1);
+
+                                }
+                                config.TrafficLight.TrafficLine.Add(trafficLine);
+                            }
+
+                            if(frmMarkingSet.nTrafficNumber2 == 1 && i == 4)
+                            {
+                                TrafficLine trafficLine = new TrafficLine();
+                                trafficLine.TraffcLightNumber = 2;
+                                trafficLine.TraffcLightType = "";
+                                trafficLine.Points = new List<string>();
+                                for (int n = 0; n < mPicTrafficLightsPoints.Count; n++)
+                                {
+                                    string point1 = mPicTrafficLightsPoints[n].X + "," + mPicTrafficLightsPoints[n].Y;
+                                    trafficLine.Points.Add(point1);
+
+                                }
+                                config.TrafficLight.TrafficLine.Add(trafficLine);
+                            }
+                            else if(frmMarkingSet.nTrafficNumber2 == 0 && i == 4)
+                            {
+                                TrafficLine trafficLine = new TrafficLine();
+                                trafficLine.TraffcLightNumber = 2;
+                                trafficLine.TraffcLightType = "";
+                                trafficLine.Points = new List<string>();
+                                for (int n = 0; n < mPicTrafficLightsPoints.Count; n++)
+                                {
+                                    string point1 = "-10,-10";
+                                    trafficLine.Points.Add(point1);
+
+                                }
+                                config.TrafficLight.TrafficLine.Add(trafficLine);
+                            }
+
+                            if (frmMarkingSet.nTrafficNumber3 == 1 && i == 5)
+                            {
+                                TrafficLine trafficLine = new TrafficLine();
+                                trafficLine.TraffcLightNumber = 3;
+                                trafficLine.TraffcLightType = "";
+                                trafficLine.Points = new List<string>();
+                                for (int n = 0; n < mPicTrafficLightsPoints.Count; n++)
+                                {
+                                    string point1 = mPicTrafficLightsPoints[n].X + "," + mPicTrafficLightsPoints[n].Y;
+                                    trafficLine.Points.Add(point1);
+
+                                }
+                                config.TrafficLight.TrafficLine.Add(trafficLine);
+                            }else if (frmMarkingSet.nTrafficNumber3 == 0 && i == 5)
+                            {
+                                TrafficLine trafficLine = new TrafficLine();
+                                trafficLine.TraffcLightNumber = 3;
+                                trafficLine.TraffcLightType = "";
+                                trafficLine.Points = new List<string>();
+                                for (int n = 0; n < mPicTrafficLightsPoints.Count; n++)
+                                {
+                                    string point1 = "-10,-10";
+                                    trafficLine.Points.Add(point1);
+
+                                }
+                                config.TrafficLight.TrafficLine.Add(trafficLine);
+                            }
+
+                            if (frmMarkingSet.nTrafficNumber4 == 1 && i == 6)
+                            {
+                                TrafficLine trafficLine = new TrafficLine();
+                                trafficLine.TraffcLightNumber = 4;
+                                trafficLine.TraffcLightType = "";
+                                trafficLine.Points = new List<string>();
+                                for (int n = 0; n < mPicTrafficLightsPoints.Count; n++)
+                                {
+                                    string point1 = mPicTrafficLightsPoints[n].X + "," + mPicTrafficLightsPoints[n].Y;
+                                    trafficLine.Points.Add(point1);
+
+                                }
+                                config.TrafficLight.TrafficLine.Add(trafficLine);
 
                             }
-                            config.TrafficLight.TrafficLine.Add(trafficLine);
+                            else  if (frmMarkingSet.nTrafficNumber4 == 0 && i ==6)
+                            {
+                                TrafficLine trafficLine = new TrafficLine();
+                                trafficLine.TraffcLightNumber = 4;
+                                trafficLine.TraffcLightType = "";
+                                trafficLine.Points = new List<string>();
+                                for (int n = 0; n < mPicTrafficLightsPoints.Count; n++)
+                                {
+                                    string point1 = "-10,-10";
+                                    trafficLine.Points.Add(point1);
+
+                                }
+                                config.TrafficLight.TrafficLine.Add(trafficLine);
+                            }
+
+
                         }
                         else
                         {
                             config.TrafficLight.HaveLine = 0;
-                            config.TrafficLight.TrafficLine = new List<TrafficLine>();
-                            TrafficLine trafficLine = new TrafficLine();
-                            trafficLine.Points = new List<string>();
-                            for (int n = 0; n < mPicTrafficLightsPoints.Count; n++)
+                            if (config.TrafficLight.TrafficLine == null )
                             {
-                                string point1 = "-10,-10";
-                                trafficLine.Points.Add(point1);
-
+                                config.TrafficLight.TrafficLine = new List<TrafficLine>();
                             }
-                            config.TrafficLight.TrafficLine.Add(trafficLine);
+
+                            for(int k =0; k<4; k++)
+                            {
+                                TrafficLine trafficLine = new TrafficLine();
+                                trafficLine.TraffcLightNumber = k + 1;
+                                trafficLine.TraffcLightType = "";
+                                trafficLine.Points = new List<string>();
+                                for (int n = 0; n < mPicTrafficLightsPoints.Count; n++)
+                                {
+                                    string point1 = "-10,-10";
+                                    trafficLine.Points.Add(point1);
+
+                                }
+                                config.TrafficLight.TrafficLine.Add(trafficLine);
+                            }
+                           
                         }
 
                     }
@@ -1222,7 +1361,10 @@ namespace TIEVision.UI.Vehicle
 
 
                         ////TrafficLights
-                        TrafficLights.Clear();
+                        TrafficLights1.Clear();
+                        TrafficLights2.Clear();
+                        TrafficLights3.Clear();
+                        TrafficLights4.Clear();
                         if (null != dbConfig.TrafficLight)
                         {
                             if (dbConfig.TrafficLight.HaveLine == 1)
@@ -1238,21 +1380,100 @@ namespace TIEVision.UI.Vehicle
                                 foreach (var traffic in dbConfig.TrafficLight.TrafficLine)
                                 {
 
-                                    string[] positionArr = traffic.Points[0].Split(',');
-                                    Point position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
-                                    TrafficLights.Add(PicturePointToScreen(new Point(position.X, position.Y)));
-                                    positionArr = traffic.Points[1].Split(',');
-                                    position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
-                                    TrafficLights.Add(PicturePointToScreen(new Point(position.X, position.Y)));
-                                    positionArr = traffic.Points[2].Split(',');
-                                    position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
-                                    TrafficLights.Add(PicturePointToScreen(new Point(position.X, position.Y)));
-                                    positionArr = traffic.Points[3].Split(',');
-                                    position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
-                                    TrafficLights.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+                                    if (traffic.TraffcLightNumber == 1)
+                                    {
+                                        frmMarkingSet.nTrafficNumber1 = 1;
+                                        if(traffic.Points[0].Contains("-"))
+                                        {
+                                            frmMarkingSet.nTrafficNumber1 = 0;
+                                        }
+                                        string[] positionArr = traffic.Points[0].Split(',');
+                                        Point position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                        TrafficLights1.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+                                        positionArr = traffic.Points[1].Split(',');
+                                        position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                        TrafficLights1.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+                                        positionArr = traffic.Points[2].Split(',');
+                                        position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                        TrafficLights1.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+                                        positionArr = traffic.Points[3].Split(',');
+                                        position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                        TrafficLights1.Add(PicturePointToScreen(new Point(position.X, position.Y)));
 
-                                    Polygons.Add(TrafficLights);
-                                    PolygonsType.Add("TrafficLights");
+                                        Polygons.Add(TrafficLights1);
+                                        PolygonsType.Add("TrafficLights");
+                                    }
+                                    if (traffic.TraffcLightNumber == 2) 
+                                    { 
+                                        frmMarkingSet.nTrafficNumber2 = 1;
+                                        if (traffic.Points[0].Contains("-"))
+                                        {
+                                            frmMarkingSet.nTrafficNumber2 = 0;
+                                        }
+                                        string[] positionArr = traffic.Points[0].Split(',');
+                                        Point position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                        TrafficLights2.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+                                        positionArr = traffic.Points[1].Split(',');
+                                        position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                        TrafficLights2.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+                                        positionArr = traffic.Points[2].Split(',');
+                                        position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                        TrafficLights2.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+                                        positionArr = traffic.Points[3].Split(',');
+                                        position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                        TrafficLights2.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+
+                                        Polygons.Add(TrafficLights2);
+                                        PolygonsType.Add("TrafficLights");
+                                    }
+                                    if (traffic.TraffcLightNumber == 3)
+                                    {
+                                        frmMarkingSet.nTrafficNumber3= 1;
+                                        if (traffic.Points[0].Contains("-"))
+                                        {
+                                            frmMarkingSet.nTrafficNumber3 = 0;
+                                        }
+                                        string[] positionArr = traffic.Points[0].Split(',');
+                                        Point position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                        TrafficLights3.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+                                        positionArr = traffic.Points[1].Split(',');
+                                        position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                        TrafficLights3.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+                                        positionArr = traffic.Points[2].Split(',');
+                                        position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                        TrafficLights3.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+                                        positionArr = traffic.Points[3].Split(',');
+                                        position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                        TrafficLights3.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+
+                                        Polygons.Add(TrafficLights3);
+                                        PolygonsType.Add("TrafficLights");
+                                    }
+                                    if (traffic.TraffcLightNumber == 4)
+                                    { 
+                                        frmMarkingSet.nTrafficNumber4= 1;
+                                        if (traffic.Points[0].Contains("-"))
+                                        {
+                                            frmMarkingSet.nTrafficNumber4 = 0;
+                                        }
+                                        string[] positionArr = traffic.Points[0].Split(',');
+                                        Point position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                        TrafficLights4.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+                                        positionArr = traffic.Points[1].Split(',');
+                                        position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                        TrafficLights4.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+                                        positionArr = traffic.Points[2].Split(',');
+                                        position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                        TrafficLights4.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+                                        positionArr = traffic.Points[3].Split(',');
+                                        position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                        TrafficLights4.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+
+                                        Polygons.Add(TrafficLights4);
+                                        PolygonsType.Add("TrafficLights");
+                                    }                        
+                                    
+                                    
                                 }
                             }
 
@@ -1483,28 +1704,111 @@ namespace TIEVision.UI.Vehicle
                         {
                             if (frmMarkingSet.nHaveTrafficLights == 1)
                             {
-                                int point1 = mPicTrafficLightsPoints[0].X;
-                                if (point1 < 0)
+                                if(frmMarkingSet.nTrafficNumber1 ==1 && i == 3)
                                 {
-                                    TrafficLights.Clear();
-                                    TrafficLights.Add(new Point(width / 2 - padding, padding));
-                                    TrafficLights.Add(new Point(width / 2 - padding + padding * 2, padding));
-                                    TrafficLights.Add(new Point(width / 2 - padding + padding * 2, padding * 4));
-                                    TrafficLights.Add(new Point(width / 2 - padding, padding * 4));
-                                    Polygons[i] = TrafficLights;
+                                    int point1 = mPicTrafficLightsPoints[0].X;
+                                    if (point1 < 0)
+                                    {
+
+                                        TrafficLights1.Clear();
+                                        TrafficLights1.Add(new Point(width / 5 - padding, padding));
+                                        TrafficLights1.Add(new Point(width / 5 - padding + padding * 2, padding));
+                                        TrafficLights1.Add(new Point(width / 5 - padding + padding * 2, padding * 4));
+                                        TrafficLights1.Add(new Point(width / 5 - padding, padding * 4));
+                                        Polygons[i] = TrafficLights1;
+                                    }
+
+                                }
+                                else if (frmMarkingSet.nTrafficNumber1 ==0 && i == 3)
+                                {
+
+                                    TrafficLights1.Clear();
+                                    TrafficLights1.Add(new Point(-10, -10));
+                                    TrafficLights1.Add(new Point(-10, -10));
+                                    TrafficLights1.Add(new Point(-10, -10));
+                                    TrafficLights1.Add(new Point(-10, -10));
+                                    Polygons[i] = TrafficLights1;
                                 }
 
+                                if (frmMarkingSet.nTrafficNumber2 == 1 && i == 4)
+                                {
+                                    int point1 = mPicTrafficLightsPoints[0].X;
+                                    if (point1 < 0)
+                                    {
+                                        TrafficLights2.Clear();
+                                        TrafficLights2 = new List<Point>();
+                                        TrafficLights2.Add(new Point(width / 4 - padding + padding * 0, padding));
+                                        TrafficLights2.Add(new Point(width / 4 - padding + padding * 2, padding));
+                                        TrafficLights2.Add(new Point(width / 4 - padding + padding * 2, padding * 4));
+                                        TrafficLights2.Add(new Point(width / 4 - padding + padding * 0, padding * 4));
+                                        Polygons[i] = TrafficLights2;
+                                    }
+
+
+                                }
+                                else if (frmMarkingSet.nTrafficNumber2 == 0 && i == 4)
+                                {
+                                    TrafficLights2.Clear();
+                                    TrafficLights2.Add(new Point(-10, -10));
+                                    TrafficLights2.Add(new Point(-10, -10));
+                                    TrafficLights2.Add(new Point(-10, -10));
+                                    TrafficLights2.Add(new Point(-10, -10));
+                                    Polygons[i] = TrafficLights2;
+                                }
+
+                                if (frmMarkingSet.nTrafficNumber3 == 1 && i == 5)
+                                {
+                                    int point1 = mPicTrafficLightsPoints[0].X;
+                                    if (point1 < 0)
+                                    {
+                                        TrafficLights3.Clear();
+                                        TrafficLights3 = new List<Point>();
+                                        TrafficLights3.Add(new Point(width / 3 - padding + padding * 0, padding));
+                                        TrafficLights3.Add(new Point(width / 3 - padding + padding * 2, padding));
+                                        TrafficLights3.Add(new Point(width / 3 - padding + padding * 2, padding * 4));
+                                        TrafficLights3.Add(new Point(width / 3 - padding + padding * 0, padding * 4));
+                                        Polygons[i] = TrafficLights3;
+
+                                    }
+                                }
+                                else if (frmMarkingSet.nTrafficNumber3 == 0 && i == 5)
+                                {
+                                    TrafficLights3.Clear();
+                                    TrafficLights3.Add(new Point(-10, -10));
+                                    TrafficLights3.Add(new Point(-10, -10));
+                                    TrafficLights3.Add(new Point(-10, -10));
+                                    TrafficLights3.Add(new Point(-10, -10));
+                                    Polygons[i] = TrafficLights3;
+                                }
+
+                                if (frmMarkingSet.nTrafficNumber4 == 1 && i ==6)
+                                {
+                                    int point1 = mPicTrafficLightsPoints[0].X;
+                                    if (point1 < 0)
+                                    {
+                                        TrafficLights4.Clear();
+                                        TrafficLights4 = new List<Point>();
+                                        TrafficLights4.Add(new Point(width / 2 - padding + padding * 0, padding));
+                                        TrafficLights4.Add(new Point(width / 2 - padding + padding * 2, padding));
+                                        TrafficLights4.Add(new Point(width / 2 - padding + padding * 2, padding * 4));
+                                        TrafficLights4.Add(new Point(width / 2 - padding + padding * 0, padding * 4));
+                                        Polygons[i] = TrafficLights4;
+                                    }
+                                }else  if (frmMarkingSet.nTrafficNumber4 == 0 && i ==6)
+                                {
+                                    TrafficLights4.Clear();
+                                    TrafficLights4.Add(new Point(-10, -10));
+                                    TrafficLights4.Add(new Point(-10, -10));
+                                    TrafficLights4.Add(new Point(-10, -10));
+                                    TrafficLights4.Add(new Point(-10, -10));
+                                    Polygons[i] = TrafficLights4;
+                                }
+                                
 
                             }
                             else
                             {
 
-                                TrafficLights.Clear();
-                                TrafficLights.Add(new Point(-10, -10));
-                                TrafficLights.Add(new Point(-10, -10));
-                                TrafficLights.Add(new Point(-10, -10));
-                                TrafficLights.Add(new Point(-10, -10));
-                                Polygons[i] = TrafficLights;
 
                             }
 
@@ -1745,23 +2049,100 @@ namespace TIEVision.UI.Vehicle
                     //TrafficLights
                     if (frmMarkingSet.nHaveTrafficLights == 1)
                     {
-                        TrafficLights.Clear();
-                        TrafficLights.Add(new Point(width / 2 - padding, padding));
-                        TrafficLights.Add(new Point(width / 2 - padding + padding * 2, padding));
-                        TrafficLights.Add(new Point(width / 2 - padding + padding * 2, padding * 4));
-                        TrafficLights.Add(new Point(width / 2 - padding, padding * 4));
-                        Polygons.Add(TrafficLights);
-                        PolygonsType.Add("TrafficLights");
+                        if(frmMarkingSet.nTrafficNumber1 ==1 )
+                        {
+                            TrafficLights1.Clear();
+                            TrafficLights1 = new List<Point>();
+                            TrafficLights1.Add(new Point(width / 5 - padding, padding));
+                            TrafficLights1.Add(new Point(width / 5 - padding + padding * 2, padding));
+                            TrafficLights1.Add(new Point(width / 5 - padding + padding * 2, padding * 4));
+                            TrafficLights1.Add(new Point(width / 5 - padding, padding * 4));
+                            Polygons.Add(TrafficLights1);
+                            PolygonsType.Add("TrafficLights");
+                        }
+                        else
+                        {
+                            TrafficLights1.Clear();
+                            TrafficLights1.Add(new Point(-10, -10));
+                            TrafficLights1.Add(new Point(-10, -10));
+                            TrafficLights1.Add(new Point(-10, -10));
+                            TrafficLights1.Add(new Point(-10, -10));
+                            Polygons.Add(TrafficLights1);
+                            PolygonsType.Add("TrafficLights");
+                        }
+
+                        if (frmMarkingSet.nTrafficNumber2 == 1)
+                        {
+                            TrafficLights2.Clear();
+                            TrafficLights2 = new List<Point>();
+                            TrafficLights2.Add(new Point(width / 4 - padding + padding * 0, padding));
+                            TrafficLights2.Add(new Point(width / 4 - padding + padding * 2, padding));
+                            TrafficLights2.Add(new Point(width / 4 - padding + padding * 2, padding * 4));
+                            TrafficLights2.Add(new Point(width / 4 - padding + padding * 0, padding * 4));
+                            Polygons.Add(TrafficLights2);
+                            PolygonsType.Add("TrafficLights");
+                        }
+                        else
+                        {
+                            TrafficLights2.Clear();
+                            TrafficLights2.Add(new Point(-10, -10));
+                            TrafficLights2.Add(new Point(-10, -10));
+                            TrafficLights2.Add(new Point(-10, -10));
+                            TrafficLights2.Add(new Point(-10, -10));
+                            Polygons.Add(TrafficLights2);
+                            PolygonsType.Add("TrafficLights");
+                        }
+
+                        if (frmMarkingSet.nTrafficNumber3 == 1)
+                        {
+                            TrafficLights3.Clear();
+                            TrafficLights3 = new List<Point>();
+                            TrafficLights3.Add(new Point(width / 3 - padding + padding * 0, padding));
+                            TrafficLights3.Add(new Point(width / 3 - padding + padding * 2, padding));
+                            TrafficLights3.Add(new Point(width / 3 - padding + padding * 2, padding * 4));
+                            TrafficLights3.Add(new Point(width / 3 - padding + padding * 0, padding * 4));
+                            Polygons.Add(TrafficLights3);
+                            PolygonsType.Add("TrafficLights");
+                        }
+                        else
+                        {
+                            TrafficLights3.Clear();
+                            TrafficLights3.Add(new Point(-10, -10));
+                            TrafficLights3.Add(new Point(-10, -10));
+                            TrafficLights3.Add(new Point(-10, -10));
+                            TrafficLights3.Add(new Point(-10, -10));
+                            Polygons.Add(TrafficLights3);
+                            PolygonsType.Add("TrafficLights");
+                        
+                        }
+
+                        if (frmMarkingSet.nTrafficNumber4 == 1)
+                        {
+                            TrafficLights4.Clear();
+                            TrafficLights4 = new List<Point>();
+                            TrafficLights4.Add(new Point(width / 2 - padding + padding * 0, padding));
+                            TrafficLights4.Add(new Point(width / 2 - padding + padding * 2, padding));
+                            TrafficLights4.Add(new Point(width / 2 - padding + padding * 2, padding * 4));
+                            TrafficLights4.Add(new Point(width / 2 - padding + padding * 0, padding * 4));
+                            Polygons.Add(TrafficLights4);
+                            PolygonsType.Add("TrafficLights");
+                        }
+                        else
+                        {
+                            TrafficLights4.Clear();
+                            TrafficLights4.Add(new Point(-10, -10));
+                            TrafficLights4.Add(new Point(-10, -10));
+                            TrafficLights4.Add(new Point(-10, -10));
+                            TrafficLights4.Add(new Point(-10, -10));
+                            Polygons.Add(TrafficLights4);
+                            PolygonsType.Add("TrafficLights");
+
+                        }
+                      
                     }
                     else
                     {
-                        TrafficLights.Clear();
-                        TrafficLights.Add(new Point(-10, -10));
-                        TrafficLights.Add(new Point(-10, -10));
-                        TrafficLights.Add(new Point(-10, -10));
-                        TrafficLights.Add(new Point(-10, -10));
-                        Polygons.Add(TrafficLights);
-                        PolygonsType.Add("TrafficLights");
+                        
                     }
 
                 }

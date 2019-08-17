@@ -61,6 +61,8 @@ namespace IRVision.Model
 
     public partial class TrafficLine
     {
+        public long TraffcLightNumber { get; set; }
+        public string TraffcLightType { get; set; }
         public List<string> Points { get; set; }
     }
 

@@ -48,10 +48,10 @@
             this.textEditCrossName = new DevExpress.XtraEditors.TextEdit();
             this.textEditCrossID = new DevExpress.XtraEditors.TextEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
-            this.checkEdit9 = new DevExpress.XtraEditors.CheckEdit();
-            this.checkEdit10 = new DevExpress.XtraEditors.CheckEdit();
-            this.checkEdit11 = new DevExpress.XtraEditors.CheckEdit();
-            this.checkEdit12 = new DevExpress.XtraEditors.CheckEdit();
+            this.checkEdit_Lane1 = new DevExpress.XtraEditors.CheckEdit();
+            this.checkEdit_Lane2 = new DevExpress.XtraEditors.CheckEdit();
+            this.checkEdit_Lane3 = new DevExpress.XtraEditors.CheckEdit();
+            this.checkEdit_Lane4 = new DevExpress.XtraEditors.CheckEdit();
             this.comboBoxEdit2 = new DevExpress.XtraEditors.ComboBoxEdit();
             this.comboBoxEdit3 = new DevExpress.XtraEditors.ComboBoxEdit();
             this.comboBoxEdit4 = new DevExpress.XtraEditors.ComboBoxEdit();
@@ -60,10 +60,10 @@
             this.comboBoxEdit7 = new DevExpress.XtraEditors.ComboBoxEdit();
             this.comboBoxEdit8 = new DevExpress.XtraEditors.ComboBoxEdit();
             this.comboBoxEdit9 = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.checkEdit13 = new DevExpress.XtraEditors.CheckEdit();
-            this.checkEdit14 = new DevExpress.XtraEditors.CheckEdit();
-            this.checkEdit15 = new DevExpress.XtraEditors.CheckEdit();
-            this.checkEdit16 = new DevExpress.XtraEditors.CheckEdit();
+            this.checkEdit_TrafficLights4 = new DevExpress.XtraEditors.CheckEdit();
+            this.checkEdit_TrafficLights3 = new DevExpress.XtraEditors.CheckEdit();
+            this.checkEdit_TrafficLights2 = new DevExpress.XtraEditors.CheckEdit();
+            this.checkEdit_TrafficLights1 = new DevExpress.XtraEditors.CheckEdit();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.simpleBtnSave = new DevExpress.XtraEditors.SimpleButton();
             this.simpleBtnCancel = new DevExpress.XtraEditors.SimpleButton();
@@ -82,10 +82,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit8.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditCrossName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditCrossID.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit9.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit10.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit11.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit12.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit_Lane1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit_Lane2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit_Lane3.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit_Lane4.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit4.Properties)).BeginInit();
@@ -94,10 +94,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit7.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit8.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit9.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit13.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit14.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit15.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit16.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit_TrafficLights4.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit_TrafficLights3.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit_TrafficLights2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit_TrafficLights1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit_CropHeight.Properties)).BeginInit();
             this.SuspendLayout();
             // 
@@ -148,7 +148,7 @@
             // checkEditZebra
             // 
             this.checkEditZebra.EditValue = true;
-            this.checkEditZebra.Location = new System.Drawing.Point(22, 235);
+            this.checkEditZebra.Location = new System.Drawing.Point(27, 291);
             this.checkEditZebra.Name = "checkEditZebra";
             this.checkEditZebra.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkEditZebra.Properties.Appearance.Options.UseFont = true;
@@ -159,7 +159,7 @@
             // checkEditTrafficLights
             // 
             this.checkEditTrafficLights.EditValue = true;
-            this.checkEditTrafficLights.Location = new System.Drawing.Point(22, 208);
+            this.checkEditTrafficLights.Location = new System.Drawing.Point(27, 255);
             this.checkEditTrafficLights.Name = "checkEditTrafficLights";
             this.checkEditTrafficLights.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkEditTrafficLights.Properties.Appearance.Options.UseFont = true;
@@ -170,7 +170,7 @@
             // checkEditLaneLine
             // 
             this.checkEditLaneLine.EditValue = true;
-            this.checkEditLaneLine.Location = new System.Drawing.Point(22, 153);
+            this.checkEditLaneLine.Location = new System.Drawing.Point(27, 183);
             this.checkEditLaneLine.Name = "checkEditLaneLine";
             this.checkEditLaneLine.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkEditLaneLine.Properties.Appearance.Options.UseFont = true;
@@ -181,7 +181,7 @@
             // checkEditStopLine
             // 
             this.checkEditStopLine.EditValue = true;
-            this.checkEditStopLine.Location = new System.Drawing.Point(22, 181);
+            this.checkEditStopLine.Location = new System.Drawing.Point(27, 219);
             this.checkEditStopLine.Name = "checkEditStopLine";
             this.checkEditStopLine.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkEditStopLine.Properties.Appearance.Options.UseFont = true;
@@ -191,7 +191,7 @@
             // 
             // checkEdit4
             // 
-            this.checkEdit4.Location = new System.Drawing.Point(175, 153);
+            this.checkEdit4.Location = new System.Drawing.Point(163, 183);
             this.checkEdit4.Name = "checkEdit4";
             this.checkEdit4.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkEdit4.Properties.Appearance.Options.UseFont = true;
@@ -201,7 +201,7 @@
             // 
             // checkEdit5
             // 
-            this.checkEdit5.Location = new System.Drawing.Point(175, 181);
+            this.checkEdit5.Location = new System.Drawing.Point(163, 210);
             this.checkEdit5.Name = "checkEdit5";
             this.checkEdit5.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkEdit5.Properties.Appearance.Options.UseFont = true;
@@ -211,7 +211,7 @@
             // 
             // checkEdit6
             // 
-            this.checkEdit6.Location = new System.Drawing.Point(175, 208);
+            this.checkEdit6.Location = new System.Drawing.Point(163, 237);
             this.checkEdit6.Name = "checkEdit6";
             this.checkEdit6.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkEdit6.Properties.Appearance.Options.UseFont = true;
@@ -221,7 +221,7 @@
             // 
             // checkEdit7
             // 
-            this.checkEdit7.Location = new System.Drawing.Point(175, 235);
+            this.checkEdit7.Location = new System.Drawing.Point(163, 264);
             this.checkEdit7.Name = "checkEdit7";
             this.checkEdit7.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkEdit7.Properties.Appearance.Options.UseFont = true;
@@ -231,7 +231,7 @@
             // 
             // checkEdit8
             // 
-            this.checkEdit8.Location = new System.Drawing.Point(175, 262);
+            this.checkEdit8.Location = new System.Drawing.Point(163, 291);
             this.checkEdit8.Name = "checkEdit8";
             this.checkEdit8.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkEdit8.Properties.Appearance.Options.UseFont = true;
@@ -242,7 +242,7 @@
             // labelControl3
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl3.Location = new System.Drawing.Point(22, 130);
+            this.labelControl3.Location = new System.Drawing.Point(29, 155);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(70, 17);
             this.labelControl3.TabIndex = 25;
@@ -251,7 +251,7 @@
             // labelControl4
             // 
             this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl4.Location = new System.Drawing.Point(175, 130);
+            this.labelControl4.Location = new System.Drawing.Point(165, 155);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(98, 17);
             this.labelControl4.TabIndex = 26;
@@ -302,45 +302,45 @@
             this.labelControl7.TabIndex = 31;
             this.labelControl7.Text = "车道属性：";
             // 
-            // checkEdit9
+            // checkEdit_Lane1
             // 
-            this.checkEdit9.Location = new System.Drawing.Point(408, 59);
-            this.checkEdit9.Name = "checkEdit9";
-            this.checkEdit9.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkEdit9.Properties.Appearance.Options.UseFont = true;
-            this.checkEdit9.Properties.Caption = "车道-1";
-            this.checkEdit9.Size = new System.Drawing.Size(69, 21);
-            this.checkEdit9.TabIndex = 32;
+            this.checkEdit_Lane1.Location = new System.Drawing.Point(408, 59);
+            this.checkEdit_Lane1.Name = "checkEdit_Lane1";
+            this.checkEdit_Lane1.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkEdit_Lane1.Properties.Appearance.Options.UseFont = true;
+            this.checkEdit_Lane1.Properties.Caption = "车道-1";
+            this.checkEdit_Lane1.Size = new System.Drawing.Size(69, 21);
+            this.checkEdit_Lane1.TabIndex = 32;
             // 
-            // checkEdit10
+            // checkEdit_Lane2
             // 
-            this.checkEdit10.Location = new System.Drawing.Point(518, 59);
-            this.checkEdit10.Name = "checkEdit10";
-            this.checkEdit10.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkEdit10.Properties.Appearance.Options.UseFont = true;
-            this.checkEdit10.Properties.Caption = "车道-2";
-            this.checkEdit10.Size = new System.Drawing.Size(69, 21);
-            this.checkEdit10.TabIndex = 33;
+            this.checkEdit_Lane2.Location = new System.Drawing.Point(518, 59);
+            this.checkEdit_Lane2.Name = "checkEdit_Lane2";
+            this.checkEdit_Lane2.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkEdit_Lane2.Properties.Appearance.Options.UseFont = true;
+            this.checkEdit_Lane2.Properties.Caption = "车道-2";
+            this.checkEdit_Lane2.Size = new System.Drawing.Size(69, 21);
+            this.checkEdit_Lane2.TabIndex = 33;
             // 
-            // checkEdit11
+            // checkEdit_Lane3
             // 
-            this.checkEdit11.Location = new System.Drawing.Point(628, 59);
-            this.checkEdit11.Name = "checkEdit11";
-            this.checkEdit11.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkEdit11.Properties.Appearance.Options.UseFont = true;
-            this.checkEdit11.Properties.Caption = "车道-3";
-            this.checkEdit11.Size = new System.Drawing.Size(69, 21);
-            this.checkEdit11.TabIndex = 34;
+            this.checkEdit_Lane3.Location = new System.Drawing.Point(628, 59);
+            this.checkEdit_Lane3.Name = "checkEdit_Lane3";
+            this.checkEdit_Lane3.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkEdit_Lane3.Properties.Appearance.Options.UseFont = true;
+            this.checkEdit_Lane3.Properties.Caption = "车道-3";
+            this.checkEdit_Lane3.Size = new System.Drawing.Size(69, 21);
+            this.checkEdit_Lane3.TabIndex = 34;
             // 
-            // checkEdit12
+            // checkEdit_Lane4
             // 
-            this.checkEdit12.Location = new System.Drawing.Point(738, 59);
-            this.checkEdit12.Name = "checkEdit12";
-            this.checkEdit12.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkEdit12.Properties.Appearance.Options.UseFont = true;
-            this.checkEdit12.Properties.Caption = "车道-4";
-            this.checkEdit12.Size = new System.Drawing.Size(69, 21);
-            this.checkEdit12.TabIndex = 35;
+            this.checkEdit_Lane4.Location = new System.Drawing.Point(738, 59);
+            this.checkEdit_Lane4.Name = "checkEdit_Lane4";
+            this.checkEdit_Lane4.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkEdit_Lane4.Properties.Appearance.Options.UseFont = true;
+            this.checkEdit_Lane4.Properties.Caption = "车道-4";
+            this.checkEdit_Lane4.Size = new System.Drawing.Size(69, 21);
+            this.checkEdit_Lane4.TabIndex = 35;
             // 
             // comboBoxEdit2
             // 
@@ -446,45 +446,45 @@
             this.comboBoxEdit9.Size = new System.Drawing.Size(98, 24);
             this.comboBoxEdit9.TabIndex = 45;
             // 
-            // checkEdit13
+            // checkEdit_TrafficLights4
             // 
-            this.checkEdit13.Location = new System.Drawing.Point(738, 125);
-            this.checkEdit13.Name = "checkEdit13";
-            this.checkEdit13.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkEdit13.Properties.Appearance.Options.UseFont = true;
-            this.checkEdit13.Properties.Caption = "信号灯-4";
-            this.checkEdit13.Size = new System.Drawing.Size(85, 21);
-            this.checkEdit13.TabIndex = 44;
+            this.checkEdit_TrafficLights4.Location = new System.Drawing.Point(738, 125);
+            this.checkEdit_TrafficLights4.Name = "checkEdit_TrafficLights4";
+            this.checkEdit_TrafficLights4.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkEdit_TrafficLights4.Properties.Appearance.Options.UseFont = true;
+            this.checkEdit_TrafficLights4.Properties.Caption = "信号灯-4";
+            this.checkEdit_TrafficLights4.Size = new System.Drawing.Size(85, 21);
+            this.checkEdit_TrafficLights4.TabIndex = 44;
             // 
-            // checkEdit14
+            // checkEdit_TrafficLights3
             // 
-            this.checkEdit14.Location = new System.Drawing.Point(628, 125);
-            this.checkEdit14.Name = "checkEdit14";
-            this.checkEdit14.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkEdit14.Properties.Appearance.Options.UseFont = true;
-            this.checkEdit14.Properties.Caption = "信号灯-3";
-            this.checkEdit14.Size = new System.Drawing.Size(85, 21);
-            this.checkEdit14.TabIndex = 43;
+            this.checkEdit_TrafficLights3.Location = new System.Drawing.Point(628, 125);
+            this.checkEdit_TrafficLights3.Name = "checkEdit_TrafficLights3";
+            this.checkEdit_TrafficLights3.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkEdit_TrafficLights3.Properties.Appearance.Options.UseFont = true;
+            this.checkEdit_TrafficLights3.Properties.Caption = "信号灯-3";
+            this.checkEdit_TrafficLights3.Size = new System.Drawing.Size(85, 21);
+            this.checkEdit_TrafficLights3.TabIndex = 43;
             // 
-            // checkEdit15
+            // checkEdit_TrafficLights2
             // 
-            this.checkEdit15.Location = new System.Drawing.Point(518, 125);
-            this.checkEdit15.Name = "checkEdit15";
-            this.checkEdit15.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkEdit15.Properties.Appearance.Options.UseFont = true;
-            this.checkEdit15.Properties.Caption = "信号灯-2";
-            this.checkEdit15.Size = new System.Drawing.Size(85, 21);
-            this.checkEdit15.TabIndex = 42;
+            this.checkEdit_TrafficLights2.Location = new System.Drawing.Point(518, 125);
+            this.checkEdit_TrafficLights2.Name = "checkEdit_TrafficLights2";
+            this.checkEdit_TrafficLights2.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkEdit_TrafficLights2.Properties.Appearance.Options.UseFont = true;
+            this.checkEdit_TrafficLights2.Properties.Caption = "信号灯-2";
+            this.checkEdit_TrafficLights2.Size = new System.Drawing.Size(85, 21);
+            this.checkEdit_TrafficLights2.TabIndex = 42;
             // 
-            // checkEdit16
+            // checkEdit_TrafficLights1
             // 
-            this.checkEdit16.Location = new System.Drawing.Point(408, 125);
-            this.checkEdit16.Name = "checkEdit16";
-            this.checkEdit16.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkEdit16.Properties.Appearance.Options.UseFont = true;
-            this.checkEdit16.Properties.Caption = "信号灯-1";
-            this.checkEdit16.Size = new System.Drawing.Size(85, 21);
-            this.checkEdit16.TabIndex = 41;
+            this.checkEdit_TrafficLights1.Location = new System.Drawing.Point(408, 125);
+            this.checkEdit_TrafficLights1.Name = "checkEdit_TrafficLights1";
+            this.checkEdit_TrafficLights1.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkEdit_TrafficLights1.Properties.Appearance.Options.UseFont = true;
+            this.checkEdit_TrafficLights1.Properties.Caption = "信号灯-1";
+            this.checkEdit_TrafficLights1.Size = new System.Drawing.Size(85, 21);
+            this.checkEdit_TrafficLights1.TabIndex = 41;
             // 
             // labelControl8
             // 
@@ -499,7 +499,7 @@
             // 
             this.simpleBtnSave.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.simpleBtnSave.Appearance.Options.UseFont = true;
-            this.simpleBtnSave.Location = new System.Drawing.Point(355, 312);
+            this.simpleBtnSave.Location = new System.Drawing.Point(296, 326);
             this.simpleBtnSave.Name = "simpleBtnSave";
             this.simpleBtnSave.Size = new System.Drawing.Size(75, 23);
             this.simpleBtnSave.TabIndex = 49;
@@ -510,7 +510,7 @@
             // 
             this.simpleBtnCancel.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.simpleBtnCancel.Appearance.Options.UseFont = true;
-            this.simpleBtnCancel.Location = new System.Drawing.Point(462, 312);
+            this.simpleBtnCancel.Location = new System.Drawing.Point(418, 326);
             this.simpleBtnCancel.Name = "simpleBtnCancel";
             this.simpleBtnCancel.Size = new System.Drawing.Size(75, 23);
             this.simpleBtnCancel.TabIndex = 50;
@@ -549,19 +549,19 @@
             this.Controls.Add(this.comboBoxEdit7);
             this.Controls.Add(this.comboBoxEdit8);
             this.Controls.Add(this.comboBoxEdit9);
-            this.Controls.Add(this.checkEdit13);
-            this.Controls.Add(this.checkEdit14);
-            this.Controls.Add(this.checkEdit15);
-            this.Controls.Add(this.checkEdit16);
+            this.Controls.Add(this.checkEdit_TrafficLights4);
+            this.Controls.Add(this.checkEdit_TrafficLights3);
+            this.Controls.Add(this.checkEdit_TrafficLights2);
+            this.Controls.Add(this.checkEdit_TrafficLights1);
             this.Controls.Add(this.labelControl8);
             this.Controls.Add(this.comboBoxEdit5);
             this.Controls.Add(this.comboBoxEdit4);
             this.Controls.Add(this.comboBoxEdit3);
             this.Controls.Add(this.comboBoxEdit2);
-            this.Controls.Add(this.checkEdit12);
-            this.Controls.Add(this.checkEdit11);
-            this.Controls.Add(this.checkEdit10);
-            this.Controls.Add(this.checkEdit9);
+            this.Controls.Add(this.checkEdit_Lane4);
+            this.Controls.Add(this.checkEdit_Lane3);
+            this.Controls.Add(this.checkEdit_Lane2);
+            this.Controls.Add(this.checkEdit_Lane1);
             this.Controls.Add(this.labelControl7);
             this.Controls.Add(this.textEditCrossID);
             this.Controls.Add(this.textEditCrossName);
@@ -600,10 +600,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit8.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditCrossName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditCrossID.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit9.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit10.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit11.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit12.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit_Lane1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit_Lane2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit_Lane3.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit_Lane4.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit4.Properties)).EndInit();
@@ -612,10 +612,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit7.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit8.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit9.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit13.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit14.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit15.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit16.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit_TrafficLights4.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit_TrafficLights3.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit_TrafficLights2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit_TrafficLights1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit_CropHeight.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -644,10 +644,10 @@
         private DevExpress.XtraEditors.TextEdit textEditCrossName;
         private DevExpress.XtraEditors.TextEdit textEditCrossID;
         private DevExpress.XtraEditors.LabelControl labelControl7;
-        private DevExpress.XtraEditors.CheckEdit checkEdit9;
-        private DevExpress.XtraEditors.CheckEdit checkEdit10;
-        private DevExpress.XtraEditors.CheckEdit checkEdit11;
-        private DevExpress.XtraEditors.CheckEdit checkEdit12;
+        private DevExpress.XtraEditors.CheckEdit checkEdit_Lane1;
+        private DevExpress.XtraEditors.CheckEdit checkEdit_Lane2;
+        private DevExpress.XtraEditors.CheckEdit checkEdit_Lane3;
+        private DevExpress.XtraEditors.CheckEdit checkEdit_Lane4;
         private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit2;
         private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit3;
         private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit4;
@@ -656,10 +656,10 @@
         private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit7;
         private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit8;
         private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit9;
-        private DevExpress.XtraEditors.CheckEdit checkEdit13;
-        private DevExpress.XtraEditors.CheckEdit checkEdit14;
-        private DevExpress.XtraEditors.CheckEdit checkEdit15;
-        private DevExpress.XtraEditors.CheckEdit checkEdit16;
+        private DevExpress.XtraEditors.CheckEdit checkEdit_TrafficLights4;
+        private DevExpress.XtraEditors.CheckEdit checkEdit_TrafficLights3;
+        private DevExpress.XtraEditors.CheckEdit checkEdit_TrafficLights2;
+        private DevExpress.XtraEditors.CheckEdit checkEdit_TrafficLights1;
         private DevExpress.XtraEditors.LabelControl labelControl8;
         private DevExpress.XtraEditors.SimpleButton simpleBtnSave;
         private DevExpress.XtraEditors.SimpleButton simpleBtnCancel;

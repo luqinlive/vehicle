@@ -24,6 +24,12 @@ namespace IRVision.UI.Vehicle
         public int nCropHeight { get; set; }
         public int nScreenMode { get; set; }
         public int nLaneNumber { get; set; }
+
+        public int nTrafficNumber1 { get; set; }
+        public int nTrafficNumber2 { get; set; }
+        public int nTrafficNumber3 { get; set; }
+        public int nTrafficNumber4 { get; set; }
+
         public List<HSysDictInfo> mScreenModeList = new List<HSysDictInfo>();
         public List<HSysDictInfo> mLaneNumberList = new List<HSysDictInfo>();
 
@@ -90,6 +96,44 @@ namespace IRVision.UI.Vehicle
                 checkEditZebra.Checked = false;
             }
 
+            //TrafficLights
+            if(nTrafficNumber1 == 1)
+            {
+                checkEdit_TrafficLights1.Checked = true;
+            }
+            else
+            {
+                checkEdit_TrafficLights1.Checked = false;
+
+            }
+            if (nTrafficNumber2 == 1)
+            {
+                checkEdit_TrafficLights2.Checked = true;
+            }
+            else
+            {
+                checkEdit_TrafficLights2.Checked = false;
+
+            }
+            if (nTrafficNumber3 == 1)
+            {
+                checkEdit_TrafficLights3.Checked = true;
+            }
+            else
+            {
+                checkEdit_TrafficLights3.Checked = false;
+
+            }
+            if (nTrafficNumber4 == 1)
+            {
+                checkEdit_TrafficLights4.Checked = true;
+            }
+            else
+            {
+                checkEdit_TrafficLights4.Checked = false;
+
+            }
+
             if(null!= mCrossConfig)
             {
                 textEdit_CropHeight.Text = mCrossConfig.CropHeight + "" ;
@@ -150,6 +194,11 @@ namespace IRVision.UI.Vehicle
             {
                 this.nHaveTrafficLights = 0;
             }
+            if (checkEdit_TrafficLights1.Checked == true) { this.nTrafficNumber1 = 1; } else { this.nTrafficNumber1 = 0; }
+            if (checkEdit_TrafficLights2.Checked == true) { this.nTrafficNumber2 = 1; } else { this.nTrafficNumber2 = 0; }
+            if (checkEdit_TrafficLights3.Checked == true) { this.nTrafficNumber3 = 1; } else { this.nTrafficNumber3 = 0; }
+            if (checkEdit_TrafficLights4.Checked == true) { this.nTrafficNumber4 = 1; } else { this.nTrafficNumber4 = 0; }
+
 
             //Zebra
             if (checkEditZebra.Checked == true)

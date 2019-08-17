@@ -20,6 +20,10 @@ namespace IRVision.UI.Vehicle
         public delegate void DelegateBindHandler();
         CrossingInfoDAL dal = new CrossingInfoDAL();
         List<CrossingInfo> mCrossingList = new List<CrossingInfo>();
+
+        public delegate void ShowCrossEventHandler(string  msg);
+        public static event ShowCrossEventHandler ShowCrossInfo;
+
         public FrmCrossing()
         {
             InitializeComponent();
@@ -81,6 +85,17 @@ namespace IRVision.UI.Vehicle
             if (frmCrossingAdd.DialogResult == System.Windows.Forms.DialogResult.OK)
             {
                 loadData();
+                if (ShowCrossInfo != null)
+                {
+                    try
+                    {
+                        ShowCrossInfo("");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                }
             }
         }
 
@@ -95,6 +110,17 @@ namespace IRVision.UI.Vehicle
                 if (retVal>=0)
                 {
                     loadData();
+                    if (ShowCrossInfo != null)
+                    {
+                        try
+                        {
+                            ShowCrossInfo("");
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                        }
+                    }
                 }
             }
         }
