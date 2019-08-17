@@ -29,10 +29,11 @@ namespace TIEVision.UI.Vehicle
         List<Point> StopLine = new List<Point>();
         List<Point> ZebraCross = new List<Point>();
         List<Point> TrafficLights = new List<Point>();
-        double scaleX =  0.0f;
+        double scaleX = 0.0f;
         double scaleY = 0.0f;
         private Image mCurOperateImage = null;
         public FrmMarkingSet frmMarkingSet = new FrmMarkingSet();
+        public int nCurrentChannel = -1;
 
         public FrmMarking()
         {
@@ -42,7 +43,21 @@ namespace TIEVision.UI.Vehicle
         private void FrmMarking_Load(object sender, EventArgs e)
         {
             AddPointCursor = new Cursor(IRVision.Properties.Resources.add_point.GetHicon());
+
+            InitParams();
             loadData();
+        }
+
+        private void InitParams()
+        {
+            frmMarkingSet.nScreenMode = 4;
+            frmMarkingSet.nLaneNumber = 3;
+            frmMarkingSet.nHaveLaneLine = 1;
+            frmMarkingSet.nHaveStopLine = 1;
+            frmMarkingSet.nHaveTrafficLights = 1;
+            frmMarkingSet.nHaveZebra = 1;
+            frmMarkingSet.nCropHeight = 0;
+            frmMarkingSet.SetControlStatus();
         }
 
         private void loadData()
@@ -80,7 +95,7 @@ namespace TIEVision.UI.Vehicle
             {
                 comboBoxEditCross.Properties.Items.Add(item.CROSSING_NAME);
             }
-            
+
         }
 
         private void cutImage()
@@ -129,9 +144,9 @@ namespace TIEVision.UI.Vehicle
                     scaleX = (double)img1.Width / (double)pictureEdit1.Width;
                     scaleY = (double)img1.Height / (double)pictureEdit1.Height;
                 }
-                
+
             }
-           
+
         }
 
 
@@ -159,7 +174,7 @@ namespace TIEVision.UI.Vehicle
         }
 
         // The "size" of an object for mouse over purposes.
-        private const int object_radius = 4;
+        private const int object_radius = 5;
 
         // We're over an object if the distance squared
         // between the mouse and the object is less than this.
@@ -375,13 +390,19 @@ namespace TIEVision.UI.Vehicle
                 // Draw the polygon.
                 e.Graphics.FillPolygon(Brushes.Transparent, polygon.ToArray());
                 e.Graphics.DrawPolygon(Pens.Blue, polygon.ToArray());
-                 //draw Lane line
-                if (polygon.Count==8)
+                //draw Lane line
+                if (polygon.Count == 10)
+                {
+                    e.Graphics.DrawLine(Pens.Yellow, polygon[1], polygon[8]);
+                    e.Graphics.DrawLine(Pens.Yellow, polygon[2], polygon[7]);
+                    e.Graphics.DrawLine(Pens.Yellow, polygon[3], polygon[6]);
+                }
+                else if (polygon.Count == 8)
                 {
                     e.Graphics.DrawLine(Pens.Yellow, polygon[1], polygon[6]);
                     e.Graphics.DrawLine(Pens.Yellow, polygon[2], polygon[5]);
                 }
-                else if(polygon.Count == 6)
+                else if (polygon.Count == 6)
                 {
                     e.Graphics.DrawLine(Pens.Yellow, polygon[1], polygon[4]);
                 }
@@ -389,7 +410,7 @@ namespace TIEVision.UI.Vehicle
                 {
                     e.Graphics.DrawLine(Pens.Blue, polygon[0], polygon[1]);
                 }
-               
+
                 // Draw the corners.
                 foreach (Point corner in polygon)
                 {
@@ -401,13 +422,13 @@ namespace TIEVision.UI.Vehicle
                     e.Graphics.FillRectangle(Brushes.White, rect);
                     e.Graphics.DrawRectangle(Pens.Black, rect);
 
-                  
+
                 }
             }
 
-            
 
-           
+
+
 
             // Draw the new polygon.
             if (NewPolygon != null)
@@ -516,7 +537,7 @@ namespace TIEVision.UI.Vehicle
                 }
             }
             catch (Exception ex) { Console.WriteLine(ex.Message); }
-            
+
 
             hit_polygon = null;
             return false;
@@ -604,7 +625,7 @@ namespace TIEVision.UI.Vehicle
 
         private void pictureEdit3_Paint(object sender, PaintEventArgs e)
         {
-            if(frmMarkingSet.nScreenMode == 4 )
+            if (frmMarkingSet.nScreenMode == 4)
             {
                 e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
                 //e.Graphics.Clear(pictureEdit1.BackColor);
@@ -631,18 +652,18 @@ namespace TIEVision.UI.Vehicle
                     }
                 }
             }
-            
+
 
         }
 
         public List<Point> ScreenPointToPicture(List<Point> points)
         {
             List<Point> mConvertPoint = new List<Point>();
-            foreach(var item in points)
+            foreach (var item in points)
             {
                 int _x = (int)(Math.Round(item.X * scaleX));
                 int _y = (int)(Math.Round(item.Y * scaleY));
-                mConvertPoint.Add(new Point(_x,_y));
+                mConvertPoint.Add(new Point(_x, _y));
             }
             return mConvertPoint;
         }
@@ -678,20 +699,20 @@ namespace TIEVision.UI.Vehicle
             config.CropHeight = cropHeight;// Convert.ToInt32(textEdit_CropHeight.Text.ToString());
             config.ScreenMode = frmMarkingSet.nScreenMode;
             config.LaneNumber = frmMarkingSet.nLaneNumber;
-            for(int i=0; i< Polygons.Count ;i++)
+            for (int i = 0; i < Polygons.Count; i++)
             {
                 //LaneLine
-               
-                if(PolygonsType[i] == "LaneLine")
+
+                if (PolygonsType[i] == "LaneLine")
                 {
-                    List<Point> mLaneLine= Polygons[i];
+                    List<Point> mLaneLine = Polygons[i];
                     Console.WriteLine(mLaneLine[0].X + "," + mLaneLine[0].Y);
-                    if (frmMarkingSet.nHaveZebra == 1)
+                    if (frmMarkingSet.nHaveLaneLine == 1)
                     {
                         List<Point> mPicLanePoints = ScreenPointToPicture(mLaneLine);
                         if (mPicLanePoints.Count == 8)
                         {
-
+                            //Three Lane 
                             config.LaneLine = new LaneLine();
                             config.LaneLine.HaveLine = 1;
                             config.LaneLine.LineNumber = 3;
@@ -717,39 +738,117 @@ namespace TIEVision.UI.Vehicle
                             line4.EndPoint = mPicLanePoints[4].X + "," + mPicLanePoints[4].Y;
                             config.LaneLine.LinePosition.Add(line4);
                         }
+                        else if (mPicLanePoints.Count == 10)
+                        {
+                            //Four Lane
+                            config.LaneLine = new LaneLine();
+                            config.LaneLine.HaveLine = 1;
+                            config.LaneLine.LineNumber = 4;
+                            config.LaneLine.LinePosition = new List<LinePosition>();
+
+                            LinePosition line1 = new LinePosition();
+                            line1.StartPoint = mPicLanePoints[0].X + "," + mPicLanePoints[0].Y;
+                            line1.EndPoint = mPicLanePoints[9].X + "," + mPicLanePoints[9].Y;
+                            config.LaneLine.LinePosition.Add(line1);
+
+                            LinePosition line2 = new LinePosition();
+                            line2.StartPoint = mPicLanePoints[1].X + "," + mPicLanePoints[1].Y;
+                            line2.EndPoint = mPicLanePoints[8].X + "," + mPicLanePoints[8].Y;
+                            config.LaneLine.LinePosition.Add(line2);
+
+                            LinePosition line3 = new LinePosition();
+                            line3.StartPoint = mPicLanePoints[2].X + "," + mPicLanePoints[2].Y;
+                            line3.EndPoint = mPicLanePoints[7].X + "," + mPicLanePoints[7].Y;
+                            config.LaneLine.LinePosition.Add(line3);
+
+                            LinePosition line4 = new LinePosition();
+                            line4.StartPoint = mPicLanePoints[3].X + "," + mPicLanePoints[3].Y;
+                            line4.EndPoint = mPicLanePoints[6].X + "," + mPicLanePoints[6].Y;
+                            config.LaneLine.LinePosition.Add(line4);
+
+                            LinePosition line5 = new LinePosition();
+                            line5.StartPoint = mPicLanePoints[4].X + "," + mPicLanePoints[4].Y;
+                            line5.EndPoint = mPicLanePoints[5].X + "," + mPicLanePoints[5].Y;
+                            config.LaneLine.LinePosition.Add(line5);
+
+                        }
+                        else if (mPicLanePoints.Count == 6)
+                        {
+                            //Two Lane 
+                            config.LaneLine = new LaneLine();
+                            config.LaneLine.HaveLine = 1;
+                            config.LaneLine.LineNumber = 2;
+                            config.LaneLine.LinePosition = new List<LinePosition>();
+
+                            LinePosition line1 = new LinePosition();
+                            line1.StartPoint = mPicLanePoints[0].X + "," + mPicLanePoints[0].Y;
+                            line1.EndPoint = mPicLanePoints[5].X + "," + mPicLanePoints[5].Y;
+                            config.LaneLine.LinePosition.Add(line1);
+
+                            LinePosition line2 = new LinePosition();
+                            line2.StartPoint = mPicLanePoints[1].X + "," + mPicLanePoints[1].Y;
+                            line2.EndPoint = mPicLanePoints[4].X + "," + mPicLanePoints[4].Y;
+                            config.LaneLine.LinePosition.Add(line2);
+
+                            LinePosition line3 = new LinePosition();
+                            line3.StartPoint = mPicLanePoints[2].X + "," + mPicLanePoints[2].Y;
+                            line3.EndPoint = mPicLanePoints[3].X + "," + mPicLanePoints[3].Y;
+                            config.LaneLine.LinePosition.Add(line3);
+
+                        }
+                        else if (mPicLanePoints.Count == 4)
+                        {
+                            //Two Lane
+                            config.LaneLine = new LaneLine();
+                            config.LaneLine.HaveLine = 1;
+                            config.LaneLine.LineNumber = 1;
+                            config.LaneLine.LinePosition = new List<LinePosition>();
+
+                            LinePosition line1 = new LinePosition();
+                            line1.StartPoint = mPicLanePoints[0].X + "," + mPicLanePoints[0].Y;
+                            line1.EndPoint = mPicLanePoints[3].X + "," + mPicLanePoints[3].Y;
+                            config.LaneLine.LinePosition.Add(line1);
+
+                            LinePosition line2 = new LinePosition();
+                            line2.StartPoint = mPicLanePoints[1].X + "," + mPicLanePoints[1].Y;
+                            line2.EndPoint = mPicLanePoints[2].X + "," + mPicLanePoints[2].Y;
+                            config.LaneLine.LinePosition.Add(line2);
+
+                        }
                     }
                     else
                     {
                         List<Point> mPicLanePoints = ScreenPointToPicture(mLaneLine);
-                        if (mPicLanePoints.Count == 8)
+                        //if (mPicLanePoints.Count == 8)
                         {
-
                             config.LaneLine = new LaneLine();
                             config.LaneLine.HaveLine = 0;
-                            config.LaneLine.LineNumber = 0;
+                            config.LaneLine.LineNumber = frmMarkingSet.nLaneNumber;
                             config.LaneLine.LinePosition = new List<LinePosition>();
 
                             LinePosition line1 = new LinePosition();
-                            line1.StartPoint ="-10,-10";
+                            line1.StartPoint = "-10,-10";
                             line1.EndPoint = "-10,-10";
-                            config.LaneLine.LinePosition.Add(line1);
-                            config.LaneLine.LinePosition.Add(line1);
-                            config.LaneLine.LinePosition.Add(line1);
-                            config.LaneLine.LinePosition.Add(line1);
+                            for (int n = 0; n < mPicLanePoints.Count / 2; n++)
+                            {
+                                config.LaneLine.LinePosition.Add(line1);
+                            }
+
+
                         }
                     }
-                    
+
                 }
                 //StopLan
-                
-                if(PolygonsType[i] == "StopLine")
+
+                if (PolygonsType[i] == "StopLine")
                 {
                     List<Point> mStopLan = Polygons[i];
                     List<Point> mPicStopLanPoints = ScreenPointToPicture(mStopLan);
-                    if(mPicStopLanPoints.Count ==2 )
+                    if (mPicStopLanPoints.Count == 2)
                     {
                         config.StopLine = new StopLine();
-                        if(frmMarkingSet.nHaveStopLine ==1)
+                        if (frmMarkingSet.nHaveStopLine == 1)
                         {
                             config.StopLine.HaveLine = 1;
                             config.StopLine.Points = new List<string>();
@@ -767,23 +866,23 @@ namespace TIEVision.UI.Vehicle
                             config.StopLine.Points.Add(point1);
                             config.StopLine.Points.Add(point2);
                         }
-                        
+
                     }
 
                 }
                 //ZebraCross 
-                
-                if(PolygonsType[i] == "ZebraCross" )
+
+                if (PolygonsType[i] == "ZebraCross")
                 {
                     List<Point> mZebraCrossing = Polygons[i];
 
                     List<Point> mPicmZebraCrossingPoints = ScreenPointToPicture(mZebraCrossing);
-                    if(mPicmZebraCrossingPoints.Count == 4 )
+                    if (mPicmZebraCrossingPoints.Count == 4)
                     {
                         config.ZebraCrossing = new ZebraCrossing();
                         config.ZebraCrossing.HaveLine = 1;
-                        config.ZebraCrossing.TrafficPoints=  new List<string>();
-                        for(int n = 0;n < mPicmZebraCrossingPoints.Count ;n++)
+                        config.ZebraCrossing.TrafficPoints = new List<string>();
+                        for (int n = 0; n < mPicmZebraCrossingPoints.Count; n++)
                         {
                             string point1 = mPicmZebraCrossingPoints[n].X + "," + mPicmZebraCrossingPoints[n].Y;
 
@@ -797,20 +896,20 @@ namespace TIEVision.UI.Vehicle
                                 config.ZebraCrossing.HaveLine = 0;
                                 config.ZebraCrossing.TrafficPoints.Add("-10,-10");
                             }
-                           
+
                         }
                     }
                 }
                 //TrafficLights
-              
-                if(PolygonsType[i] == "TrafficLights")
+
+                if (PolygonsType[i] == "TrafficLights")
                 {
                     List<Point> mTrafficLights = Polygons[i];
                     List<Point> mPicTrafficLightsPoints = ScreenPointToPicture(mTrafficLights);
-                    if(mPicTrafficLightsPoints.Count == 4 )
+                    if (mPicTrafficLightsPoints.Count == 4)
                     {
                         config.TrafficLight = new TrafficLight();
-                        if(frmMarkingSet.nHaveTrafficLights ==1)
+                        if (frmMarkingSet.nHaveTrafficLights == 1)
                         {
                             config.TrafficLight.HaveLine = 1;
                             config.TrafficLight.TrafficLine = new List<TrafficLine>();
@@ -838,7 +937,7 @@ namespace TIEVision.UI.Vehicle
                             }
                             config.TrafficLight.TrafficLine.Add(trafficLine);
                         }
-                        
+
                     }
                 }
 
@@ -846,23 +945,23 @@ namespace TIEVision.UI.Vehicle
             String json = JsonConvert.SerializeObject(config);
             Console.WriteLine(json);
             int nIndex = comboBoxEditCross.SelectedIndex;
-            if(nIndex>=0)
+            if (nIndex >= 0)
             {
-                var item =  mCrossingList[nIndex];
+                var item = mCrossingList[nIndex];
                 string base64Image = "";
-                if(mCurOperateImage != null )
+                if (mCurOperateImage != null)
                 {
-                     base64Image = Base64Util.GetBase64FromImage(mCurOperateImage);
+                    base64Image = Base64Util.GetBase64FromImage(mCurOperateImage);
                 }
 
-                int ret = dal.UpdateCrossingInfo(item.CROSSING_ID,json, base64Image);
-                if(ret == 1 )
+                int ret = dal.UpdateCrossingInfo(item.CROSSING_ID, json, base64Image);
+                if (ret == 1)
                 {
                     //Reload Update Data
                     loadData();
                     XtraMessageBox.Show("保存成功!");
                 }
-                
+
             }
 
         }
@@ -875,7 +974,7 @@ namespace TIEVision.UI.Vehicle
             if (nIndex >= 0)
             {
                 var crossInfo = mCrossingList[nIndex];
-
+                nCurrentChannel = nIndex;
                 if (!string.IsNullOrEmpty(crossInfo.CROSSING_CONFIG))
                 {
                     CrossConfig dbConfig = JsonConvert.DeserializeObject<CrossConfig>(crossInfo.CROSSING_CONFIG);
@@ -884,7 +983,7 @@ namespace TIEVision.UI.Vehicle
                         //ScreenMode 
                         frmMarkingSet.nScreenMode = Convert.ToInt32(dbConfig.ScreenMode);
                         frmMarkingSet.nLaneNumber = Convert.ToInt32(dbConfig.LaneNumber);
-                        
+
                         if (!string.IsNullOrEmpty(crossInfo.IMAGE_DATA))
                         {
                             Image decodeImage = Base64Util.GetImageFromBase64(crossInfo.IMAGE_DATA);
@@ -903,139 +1002,285 @@ namespace TIEVision.UI.Vehicle
                         //LaneLine
                         //0
                         LaneLines.Clear();
-                        if (dbConfig.LaneLine.HaveLine == 1)
+                        if (null != dbConfig.LaneLine)
                         {
-                            frmMarkingSet.nHaveLaneLine = 1;
+                            if (dbConfig.LaneLine.HaveLine == 1)
+                            {
+                                frmMarkingSet.nHaveLaneLine = 1;
+                            }
+                            else
+                            {
+                                frmMarkingSet.nHaveLaneLine = 0;
+                            }
+                            if (dbConfig.LaneLine.LineNumber == 3)
+                            {
+                                //Three Lane
+                                string[] positionArr = dbConfig.LaneLine.LinePosition[0].StartPoint.Split(',');
+                                Point position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                LaneLines.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+                                //1
+                                positionArr = dbConfig.LaneLine.LinePosition[1].StartPoint.Split(',');
+                                position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                LaneLines.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+                                //2
+                                positionArr = dbConfig.LaneLine.LinePosition[2].StartPoint.Split(',');
+                                position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                LaneLines.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+                                //3
+                                positionArr = dbConfig.LaneLine.LinePosition[3].StartPoint.Split(',');
+                                position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                LaneLines.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+                                //4
+                                positionArr = dbConfig.LaneLine.LinePosition[3].EndPoint.Split(',');
+                                position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                LaneLines.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+                                //5
+                                positionArr = dbConfig.LaneLine.LinePosition[2].EndPoint.Split(',');
+                                position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                LaneLines.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+                                //6
+                                positionArr = dbConfig.LaneLine.LinePosition[1].EndPoint.Split(',');
+                                position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                LaneLines.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+                                //7
+                                positionArr = dbConfig.LaneLine.LinePosition[0].EndPoint.Split(',');
+                                position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                LaneLines.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+                                Polygons.Add(LaneLines);
+                                PolygonsType.Add("LaneLine");
+
+                            }
+                            else if (dbConfig.LaneLine.LineNumber == 4)
+                            {
+                                //Four Lane 
+                                //0
+                                string[] positionArr = dbConfig.LaneLine.LinePosition[0].StartPoint.Split(',');
+                                Point position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                LaneLines.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+                                //1
+                                positionArr = dbConfig.LaneLine.LinePosition[1].StartPoint.Split(',');
+                                position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                LaneLines.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+                                //2
+                                positionArr = dbConfig.LaneLine.LinePosition[2].StartPoint.Split(',');
+                                position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                LaneLines.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+                                //3
+                                positionArr = dbConfig.LaneLine.LinePosition[3].StartPoint.Split(',');
+                                position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                LaneLines.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+                                //4
+                                positionArr = dbConfig.LaneLine.LinePosition[4].StartPoint.Split(',');
+                                position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                LaneLines.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+                                //5
+                                positionArr = dbConfig.LaneLine.LinePosition[4].EndPoint.Split(',');
+                                position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                LaneLines.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+                                //6
+                                positionArr = dbConfig.LaneLine.LinePosition[3].EndPoint.Split(',');
+                                position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                LaneLines.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+                                //7
+                                positionArr = dbConfig.LaneLine.LinePosition[2].EndPoint.Split(',');
+                                position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                LaneLines.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+                                //8
+                                positionArr = dbConfig.LaneLine.LinePosition[1].EndPoint.Split(',');
+                                position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                LaneLines.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+                                //9
+                                positionArr = dbConfig.LaneLine.LinePosition[0].EndPoint.Split(',');
+                                position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                LaneLines.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+                                Polygons.Add(LaneLines);
+                                PolygonsType.Add("LaneLine");
+
+                            }
+                            else if (dbConfig.LaneLine.LineNumber == 2)
+                            {
+                                //Two Lane
+                                //0
+                                string[] positionArr = dbConfig.LaneLine.LinePosition[0].StartPoint.Split(',');
+                                Point position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                LaneLines.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+                                //1
+                                positionArr = dbConfig.LaneLine.LinePosition[1].StartPoint.Split(',');
+                                position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                LaneLines.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+                                //2
+                                positionArr = dbConfig.LaneLine.LinePosition[2].StartPoint.Split(',');
+                                position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                LaneLines.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+                                //3
+                                positionArr = dbConfig.LaneLine.LinePosition[2].EndPoint.Split(',');
+                                position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                LaneLines.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+                                //4
+                                positionArr = dbConfig.LaneLine.LinePosition[1].EndPoint.Split(',');
+                                position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                LaneLines.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+                                //5
+                                positionArr = dbConfig.LaneLine.LinePosition[0].EndPoint.Split(',');
+                                position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                LaneLines.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+                                Polygons.Add(LaneLines);
+                                PolygonsType.Add("LaneLine");
+                            }
+                            else if (dbConfig.LaneLine.LineNumber == 1)
+                            {
+                                //One Lane
+
+                                //0
+                                string[] positionArr = dbConfig.LaneLine.LinePosition[0].StartPoint.Split(',');
+                                Point position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                LaneLines.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+                                //1
+                                positionArr = dbConfig.LaneLine.LinePosition[1].StartPoint.Split(',');
+                                position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                LaneLines.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+                                //2
+                                positionArr = dbConfig.LaneLine.LinePosition[1].EndPoint.Split(',');
+                                position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                LaneLines.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+                                //3
+                                positionArr = dbConfig.LaneLine.LinePosition[0].EndPoint.Split(',');
+                                position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                LaneLines.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+                                Polygons.Add(LaneLines);
+                                PolygonsType.Add("LaneLine");
+                            }
+
                         }
-                        else
-                        {
-                            frmMarkingSet.nHaveLaneLine = 0;
-                        }
-                        string [] positionArr = dbConfig.LaneLine.LinePosition[0].StartPoint.Split(',');
-                        Point position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
-                        LaneLines.Add(PicturePointToScreen(new Point(position.X, position.Y)));
-                        //1
-                         positionArr = dbConfig.LaneLine.LinePosition[1].StartPoint.Split(',');
-                        position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
-                        LaneLines.Add(PicturePointToScreen(new Point(position.X, position.Y)));
-                        //2
-                         positionArr= dbConfig.LaneLine.LinePosition[2].StartPoint.Split(',');
-                         position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
-                        LaneLines.Add(PicturePointToScreen(new Point(position.X, position.Y)));
-                        //3
-                        positionArr = dbConfig.LaneLine.LinePosition[3].StartPoint.Split(',');
-                        position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
-                        LaneLines.Add(PicturePointToScreen(new Point(position.X, position.Y)));
-                        //4
-                        positionArr = dbConfig.LaneLine.LinePosition[3].EndPoint.Split(',');
-                        position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
-                        LaneLines.Add(PicturePointToScreen(new Point(position.X, position.Y)));
-                        //5
-                        positionArr = dbConfig.LaneLine.LinePosition[2].EndPoint.Split(',');
-                        position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
-                        LaneLines.Add(PicturePointToScreen(new Point(position.X, position.Y)));
-                        //6
-                        positionArr = dbConfig.LaneLine.LinePosition[1].EndPoint.Split(',');
-                        position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
-                        LaneLines.Add(PicturePointToScreen(new Point(position.X, position.Y)));
-                        //7
-                        positionArr = dbConfig.LaneLine.LinePosition[0].EndPoint.Split(',');
-                        position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
-                        LaneLines.Add(PicturePointToScreen(new Point(position.X, position.Y)));
-                        Polygons.Add(LaneLines);
-                        PolygonsType.Add("LaneLine");                      
+
 
 
                         //StopLine
-                        if (dbConfig.StopLine.HaveLine == 1)
+                        if (null != dbConfig.StopLine)
                         {
-                            frmMarkingSet.nHaveStopLine = 1;
-                        }
-                        else
-                        {
-                            frmMarkingSet.nHaveStopLine = 0;
-                        }
-                        StopLine.Clear();
-                        positionArr = dbConfig.StopLine.Points[0].Split(',');
-                        position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
-                        StopLine.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+                            if (dbConfig.StopLine.HaveLine == 1)
+                            {
+                                frmMarkingSet.nHaveStopLine = 1;
+                            }
+                            else
+                            {
+                                frmMarkingSet.nHaveStopLine = 0;
+                            }
+                            if (null != dbConfig.StopLine)
+                            {
+                                StopLine.Clear();
+                                string[] positionArr = dbConfig.StopLine.Points[0].Split(',');
+                                Point position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                StopLine.Add(PicturePointToScreen(new Point(position.X, position.Y)));
 
-                        positionArr = dbConfig.StopLine.Points[1].Split(',');
-                        position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
-                        StopLine.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+                                positionArr = dbConfig.StopLine.Points[1].Split(',');
+                                position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                StopLine.Add(PicturePointToScreen(new Point(position.X, position.Y)));
 
-                        Polygons.Add(StopLine);
-                        PolygonsType.Add("StopLine");
+                                Polygons.Add(StopLine);
+                                PolygonsType.Add("StopLine");
+                            }
+
+                        }
+
+
 
                         //ZebraCross
                         ZebraCross.Clear();
-                        if (dbConfig.ZebraCrossing.HaveLine == 1)
+                        if (null != dbConfig.ZebraCrossing)
                         {
-                            frmMarkingSet.nHaveZebra = 1;
+                            if (dbConfig.ZebraCrossing.HaveLine == 1)
+                            {
+                                frmMarkingSet.nHaveZebra = 1;
+                            }
+                            else
+                            {
+                                frmMarkingSet.nHaveZebra = 0;
+                            }
+                            if (null != dbConfig.ZebraCrossing)
+                            {
+                                string[] positionArr = dbConfig.ZebraCrossing.TrafficPoints[0].Split(',');
+                                Point position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                ZebraCross.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+
+                                positionArr = dbConfig.ZebraCrossing.TrafficPoints[1].Split(',');
+                                position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                ZebraCross.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+
+                                positionArr = dbConfig.ZebraCrossing.TrafficPoints[2].Split(',');
+                                position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                ZebraCross.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+
+                                positionArr = dbConfig.ZebraCrossing.TrafficPoints[3].Split(',');
+                                position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                ZebraCross.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+
+                                Polygons.Add(ZebraCross);
+                                PolygonsType.Add("ZebraCross");
+                            }
                         }
-                        else
-                        {
-                            frmMarkingSet.nHaveZebra = 0;
-                        }
-                        positionArr = dbConfig.ZebraCrossing.TrafficPoints[0].Split(',');
-                        position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
-                        ZebraCross.Add(PicturePointToScreen(new Point(position.X, position.Y)));
 
-                        positionArr = dbConfig.ZebraCrossing.TrafficPoints[1].Split(',');
-                        position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
-                        ZebraCross.Add(PicturePointToScreen(new Point(position.X, position.Y)));
-
-                        positionArr = dbConfig.ZebraCrossing.TrafficPoints[2].Split(',');
-                        position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
-                        ZebraCross.Add(PicturePointToScreen(new Point(position.X, position.Y)));
-
-                        positionArr = dbConfig.ZebraCrossing.TrafficPoints[3].Split(',');
-                        position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
-                        ZebraCross.Add(PicturePointToScreen(new Point(position.X, position.Y)));
-
-                        Polygons.Add(ZebraCross);
-                        PolygonsType.Add("ZebraCross");
-
-                       
 
                         ////TrafficLights
                         TrafficLights.Clear();
-                        if (dbConfig.TrafficLight.HaveLine == 1)
+                        if (null != dbConfig.TrafficLight)
                         {
-                            frmMarkingSet.nHaveTrafficLights = 1;
-                        }
-                        else
-                        {
-                            frmMarkingSet.nHaveTrafficLights = 0;
-                        }
-                        foreach (var traffic in dbConfig.TrafficLight.TrafficLine)
-                        {
+                            if (dbConfig.TrafficLight.HaveLine == 1)
+                            {
+                                frmMarkingSet.nHaveTrafficLights = 1;
+                            }
+                            else
+                            {
+                                frmMarkingSet.nHaveTrafficLights = 0;
+                            }
+                            if (null != dbConfig.TrafficLight)
+                            {
+                                foreach (var traffic in dbConfig.TrafficLight.TrafficLine)
+                                {
 
-                            positionArr = traffic.Points[0].Split(',');
-                            position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
-                            TrafficLights.Add(PicturePointToScreen(new Point(position.X, position.Y)));
-                            positionArr = traffic.Points[1].Split(',');
-                            position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
-                            TrafficLights.Add(PicturePointToScreen(new Point(position.X, position.Y)));
-                            positionArr = traffic.Points[2].Split(',');
-                            position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
-                            TrafficLights.Add(PicturePointToScreen(new Point(position.X, position.Y)));
-                            positionArr = traffic.Points[3].Split(',');
-                            position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
-                            TrafficLights.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+                                    string[] positionArr = traffic.Points[0].Split(',');
+                                    Point position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                    TrafficLights.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+                                    positionArr = traffic.Points[1].Split(',');
+                                    position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                    TrafficLights.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+                                    positionArr = traffic.Points[2].Split(',');
+                                    position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                    TrafficLights.Add(PicturePointToScreen(new Point(position.X, position.Y)));
+                                    positionArr = traffic.Points[3].Split(',');
+                                    position = new Point(Convert.ToInt32(positionArr[0]), Convert.ToInt32(positionArr[1]));
+                                    TrafficLights.Add(PicturePointToScreen(new Point(position.X, position.Y)));
 
-                            Polygons.Add(TrafficLights);
-                            PolygonsType.Add("TrafficLights");
+                                    Polygons.Add(TrafficLights);
+                                    PolygonsType.Add("TrafficLights");
+                                }
+                            }
+
                         }
 
                         //Change control status
                         frmMarkingSet.mCrossInfo = crossInfo;
                         frmMarkingSet.mCrossConfig = dbConfig;
                         frmMarkingSet.SetControlStatus();
-                        
+
                     }
+
+
                 }
-                
+                if (!string.IsNullOrEmpty(crossInfo.IMAGE_DATA))
+                {
+                    Image decodeImage = Base64Util.GetImageFromBase64(crossInfo.IMAGE_DATA);
+                    mCurOperateImage = decodeImage;
+                    cutImage();
+                }
+                else
+                {
+                    //Clear image from picture control
+                    pictureEdit1.Image = null;
+                    pictureEdit2.Image = null;
+                    pictureEdit3.Image = null;
+                    pictureEdit4.Image = null;
+                }
             }
         }
 
@@ -1044,7 +1289,7 @@ namespace TIEVision.UI.Vehicle
             loadData();
         }
 
-        
+
         private void simpleBtnParams_Click(object sender, EventArgs e)
         {
             //modify settings 
@@ -1057,7 +1302,7 @@ namespace TIEVision.UI.Vehicle
             if (frmMarkingSet.DialogResult == System.Windows.Forms.DialogResult.OK)
             {
                 //resize image 
-                if(frmMarkingSet.nCropHeight >=0 )
+                if (frmMarkingSet.nCropHeight >= 0)
                 {
                     cutImage();
                 }
@@ -1073,39 +1318,93 @@ namespace TIEVision.UI.Vehicle
                         if (frmMarkingSet.nHaveLaneLine == 1)
                         {
                             List<Point> mPicLanePoints = ScreenPointToPicture(mLaneLine);
-                            if (mPicLanePoints.Count == 8)
+                            var crossInfo = mCrossingList[nCurrentChannel];
+                            if (!string.IsNullOrEmpty(crossInfo.CROSSING_CONFIG))
                             {
-                                int point1 = mPicLanePoints[0].X;
-                                if(point1 < 0)
+                                CrossConfig dbConfig = JsonConvert.DeserializeObject<CrossConfig>(crossInfo.CROSSING_CONFIG);
+                                if (dbConfig.LaneNumber != frmMarkingSet.nLaneNumber) ;
                                 {
-                                    //Three 
-                                    LaneLines.Clear();
-                                    LaneLines.Add(new Point(padding, (height / 4) * 3));
-                                    LaneLines.Add(new Point(padding + lane_wrap, (height / 4) * 3));
-                                    LaneLines.Add(new Point(padding + lane_wrap * 2, (height / 4) * 3));
-                                    LaneLines.Add(new Point(padding + lane_wrap * 3, (height / 4) * 3));
-                                    LaneLines.Add(new Point(padding + lane_wrap * 3, height - padding));
-                                    LaneLines.Add(new Point(padding + lane_wrap * 2, height - padding));
-                                    LaneLines.Add(new Point(padding + lane_wrap * 1, height - padding));
-                                    LaneLines.Add(new Point(padding + lane_wrap * 0, height - padding));
-                                    Polygons[i] = LaneLines;
+                                    ResetLanePoints(frmMarkingSet.nLaneNumber, i, width, height, padding, lane_wrap);
+
+
+
                                 }
-                                 
-                                
+                                int point1 = mPicLanePoints[0].X;
+                                if (point1 < 0)
+                                {
+                                    if (mPicLanePoints.Count == 8)
+                                    {
+
+                                        //Three 
+                                        LaneLines.Clear();
+                                        LaneLines.Add(new Point(padding, (height / 4) * 3));
+                                        LaneLines.Add(new Point(padding + lane_wrap, (height / 4) * 3));
+                                        LaneLines.Add(new Point(padding + lane_wrap * 2, (height / 4) * 3));
+                                        LaneLines.Add(new Point(padding + lane_wrap * 3, (height / 4) * 3));
+                                        LaneLines.Add(new Point(padding + lane_wrap * 3, height - padding));
+                                        LaneLines.Add(new Point(padding + lane_wrap * 2, height - padding));
+                                        LaneLines.Add(new Point(padding + lane_wrap * 1, height - padding));
+                                        LaneLines.Add(new Point(padding + lane_wrap * 0, height - padding));
+                                        Polygons[i] = LaneLines;
+                                    }
+                                    else if (mPicLanePoints.Count == 6)
+                                    {
+
+                                        int lane_wrap2 = ((width - 20) / 2);
+                                        LaneLines.Clear();
+                                        LaneLines.Add(new Point(padding, (height / 4) * 3));
+                                        LaneLines.Add(new Point(padding + lane_wrap2 * 1, (height / 4) * 3));
+                                        LaneLines.Add(new Point(padding + lane_wrap2 * 2, (height / 4) * 3));
+                                        LaneLines.Add(new Point(padding + lane_wrap2 * 2, height - padding));
+                                        LaneLines.Add(new Point(padding + lane_wrap2 * 1, height - padding));
+                                        LaneLines.Add(new Point(padding + lane_wrap2 * 0, height - padding));
+                                        Polygons[i] = LaneLines;
+                                    }
+                                    else if (mPicLanePoints.Count == 4)
+                                    {
+
+                                        LaneLines.Clear();
+                                        LaneLines.Add(new Point(padding, (height / 4) * 3));
+                                        LaneLines.Add(new Point(padding + lane_wrap * 3, (height / 4) * 3));
+                                        LaneLines.Add(new Point(padding + lane_wrap * 3, height - padding));
+                                        LaneLines.Add(new Point(padding + lane_wrap * 0, height - padding));
+                                        Polygons[i] = LaneLines;
+
+                                    }
+                                    else if (mPicLanePoints.Count == 10)
+                                    {
+                                        int lane_wrap4 = ((width - 20) / 4);
+                                        LaneLines.Clear();
+                                        LaneLines.Add(new Point(padding + lane_wrap4 * 0, (height / 4) * 3));
+                                        LaneLines.Add(new Point(padding + lane_wrap4 * 1, (height / 4) * 3));
+                                        LaneLines.Add(new Point(padding + lane_wrap4 * 2, (height / 4) * 3));
+                                        LaneLines.Add(new Point(padding + lane_wrap4 * 3, (height / 4) * 3));
+                                        LaneLines.Add(new Point(padding + lane_wrap4 * 4, (height / 4) * 3));
+                                        LaneLines.Add(new Point(padding + lane_wrap4 * 4, height - padding));
+                                        LaneLines.Add(new Point(padding + lane_wrap4 * 3, height - padding));
+                                        LaneLines.Add(new Point(padding + lane_wrap4 * 2, height - padding));
+                                        LaneLines.Add(new Point(padding + lane_wrap4 * 1, height - padding));
+                                        LaneLines.Add(new Point(padding + lane_wrap4 * 0, height - padding));
+                                        Polygons[i] = LaneLines;
+                                    }
+                                }
+
                             }
+
                         }
                         else
                         {
                             List<Point> mPicLanePoints = ScreenPointToPicture(mLaneLine);
-                            if (mPicLanePoints.Count == 8)
+                            int nLanePointsCount = mPicLanePoints.Count;
+                            //if (mPicLanePoints.Count == 8)
                             {
 
                                 LaneLines.Clear();
-                                for (int j = 0; j < 8; j++)
+                                for (int j = 0; j < nLanePointsCount; j++)
                                 {
                                     LaneLines.Add(new Point(-10, -10));
                                 }
-                                 Polygons[i] = LaneLines;
+                                Polygons[i] = LaneLines;
                             }
                         }
 
@@ -1120,21 +1419,21 @@ namespace TIEVision.UI.Vehicle
                         {
                             if (frmMarkingSet.nHaveStopLine == 1)
                             {
-                                int  point1 = mPicStopLanPoints[0].X ;
-                                if(point1 < 0)
+                                int point1 = mPicStopLanPoints[0].X;
+                                if (point1 < 0)
                                 {
                                     //StopLine
                                     StopLine.Clear();
                                     StopLine.Add(new Point(padding, ((height / 4) * 3) - padding));
                                     StopLine.Add(new Point(padding + lane_wrap * 3, ((height / 4) * 3) - padding));
-                                    Polygons[i]=StopLine;
+                                    Polygons[i] = StopLine;
 
                                 }
                             }
                             else
                             {
                                 StopLine.Clear();
-                                StopLine.Add(new Point(-10,-10));
+                                StopLine.Add(new Point(-10, -10));
                                 StopLine.Add(new Point(-10, -10));
                                 Polygons[i] = StopLine;
                             }
@@ -1171,7 +1470,7 @@ namespace TIEVision.UI.Vehicle
                                 ZebraCross.Add(new Point(-10, -10));
                                 Polygons[i] = ZebraCross;
                             }
-                          
+
 
                         }
                     }
@@ -1185,17 +1484,17 @@ namespace TIEVision.UI.Vehicle
                             if (frmMarkingSet.nHaveTrafficLights == 1)
                             {
                                 int point1 = mPicTrafficLightsPoints[0].X;
-                                if(point1<0)
+                                if (point1 < 0)
                                 {
                                     TrafficLights.Clear();
                                     TrafficLights.Add(new Point(width / 2 - padding, padding));
                                     TrafficLights.Add(new Point(width / 2 - padding + padding * 2, padding));
                                     TrafficLights.Add(new Point(width / 2 - padding + padding * 2, padding * 4));
                                     TrafficLights.Add(new Point(width / 2 - padding, padding * 4));
-                                    Polygons[i] =TrafficLights;
+                                    Polygons[i] = TrafficLights;
                                 }
-                               
-                               
+
+
                             }
                             else
                             {
@@ -1205,8 +1504,8 @@ namespace TIEVision.UI.Vehicle
                                 TrafficLights.Add(new Point(-10, -10));
                                 TrafficLights.Add(new Point(-10, -10));
                                 TrafficLights.Add(new Point(-10, -10));
-                                Polygons[i] =TrafficLights;
-                               
+                                Polygons[i] = TrafficLights;
+
                             }
 
                         }
@@ -1221,6 +1520,67 @@ namespace TIEVision.UI.Vehicle
             }
         }
 
+
+        private void ResetLanePoints(int nLaneNumber, int i, int width, int height, int padding, int lane_wrap)
+        {
+            if (nLaneNumber == 3)
+            {
+
+                //Three 
+                LaneLines.Clear();
+                LaneLines.Add(new Point(padding, (height / 4) * 3));
+                LaneLines.Add(new Point(padding + lane_wrap, (height / 4) * 3));
+                LaneLines.Add(new Point(padding + lane_wrap * 2, (height / 4) * 3));
+                LaneLines.Add(new Point(padding + lane_wrap * 3, (height / 4) * 3));
+                LaneLines.Add(new Point(padding + lane_wrap * 3, height - padding));
+                LaneLines.Add(new Point(padding + lane_wrap * 2, height - padding));
+                LaneLines.Add(new Point(padding + lane_wrap * 1, height - padding));
+                LaneLines.Add(new Point(padding + lane_wrap * 0, height - padding));
+                Polygons[i] = LaneLines;
+            }
+            else if (nLaneNumber == 2)
+            {
+
+                int lane_wrap2 = ((width - 20) / 2);
+                LaneLines.Clear();
+                LaneLines.Add(new Point(padding, (height / 4) * 3));
+                LaneLines.Add(new Point(padding + lane_wrap2 * 1, (height / 4) * 3));
+                LaneLines.Add(new Point(padding + lane_wrap2 * 2, (height / 4) * 3));
+                LaneLines.Add(new Point(padding + lane_wrap2 * 2, height - padding));
+                LaneLines.Add(new Point(padding + lane_wrap2 * 1, height - padding));
+                LaneLines.Add(new Point(padding + lane_wrap2 * 0, height - padding));
+                Polygons[i] = LaneLines;
+
+            }
+            else if (nLaneNumber == 1)
+            {
+
+                LaneLines.Clear();
+                LaneLines.Add(new Point(padding, (height / 4) * 3));
+                LaneLines.Add(new Point(padding + lane_wrap * 3, (height / 4) * 3));
+                LaneLines.Add(new Point(padding + lane_wrap * 3, height - padding));
+                LaneLines.Add(new Point(padding + lane_wrap * 0, height - padding));
+                Polygons[i] = LaneLines;
+
+            }
+            else if (nLaneNumber == 4)
+            {
+                int lane_wrap4 = ((width - 20) / 4);
+                LaneLines.Clear();
+                LaneLines.Add(new Point(padding + lane_wrap4 * 0, (height / 4) * 3));
+                LaneLines.Add(new Point(padding + lane_wrap4 * 1, (height / 4) * 3));
+                LaneLines.Add(new Point(padding + lane_wrap4 * 2, (height / 4) * 3));
+                LaneLines.Add(new Point(padding + lane_wrap4 * 3, (height / 4) * 3));
+                LaneLines.Add(new Point(padding + lane_wrap4 * 4, (height / 4) * 3));
+                LaneLines.Add(new Point(padding + lane_wrap4 * 4, height - padding));
+                LaneLines.Add(new Point(padding + lane_wrap4 * 3, height - padding));
+                LaneLines.Add(new Point(padding + lane_wrap4 * 2, height - padding));
+                LaneLines.Add(new Point(padding + lane_wrap4 * 1, height - padding));
+                LaneLines.Add(new Point(padding + lane_wrap4 * 0, height - padding));
+                Polygons[i] = LaneLines;
+            }
+
+        }
 
         private void simpleButtonChoosePic_Click(object sender, EventArgs e)
         {
@@ -1256,26 +1616,78 @@ namespace TIEVision.UI.Vehicle
                     int padding = 10;
                     int lane_wrap = ((width - 20) / 3);
                     //LaneLine
-                    if(frmMarkingSet.nHaveLaneLine ==1)
+                    if (frmMarkingSet.nHaveLaneLine == 1)
                     {
-                        //Three Lane
-                        LaneLines.Clear();
-                        LaneLines.Add(new Point(padding, (height / 4) * 3));
-                        LaneLines.Add(new Point(padding + lane_wrap, (height / 4) * 3));
-                        LaneLines.Add(new Point(padding + lane_wrap * 2, (height / 4) * 3));
-                        LaneLines.Add(new Point(padding + lane_wrap * 3, (height / 4) * 3));
-                        LaneLines.Add(new Point(padding + lane_wrap * 3, height - padding));
-                        LaneLines.Add(new Point(padding + lane_wrap * 2, height - padding));
-                        LaneLines.Add(new Point(padding + lane_wrap * 1, height - padding));
-                        LaneLines.Add(new Point(padding + lane_wrap * 0, height - padding));
+                        //One Lane 
+                        if (frmMarkingSet.nLaneNumber == 1)
+                        {
+                            LaneLines.Clear();
+                            LaneLines.Add(new Point(padding, (height / 4) * 3));
+                            LaneLines.Add(new Point(padding + lane_wrap * 3, (height / 4) * 3));
+                            LaneLines.Add(new Point(padding + lane_wrap * 3, height - padding));
+                            LaneLines.Add(new Point(padding + lane_wrap * 0, height - padding));
 
-                        Polygons.Add(LaneLines);
-                        PolygonsType.Add("LaneLine");
+                            Polygons.Add(LaneLines);
+                            PolygonsType.Add("LaneLine");
+                        }
+                        //Two Lane
+                        if (frmMarkingSet.nLaneNumber == 2)
+                        {
+                            int lane_wrap2 = ((width - 20) / 2);
+                            LaneLines.Clear();
+                            LaneLines.Add(new Point(padding, (height / 4) * 3));
+                            LaneLines.Add(new Point(padding + lane_wrap2 * 1, (height / 4) * 3));
+                            LaneLines.Add(new Point(padding + lane_wrap2 * 2, (height / 4) * 3));
+                            LaneLines.Add(new Point(padding + lane_wrap2 * 2, height - padding));
+                            LaneLines.Add(new Point(padding + lane_wrap2 * 1, height - padding));
+                            LaneLines.Add(new Point(padding + lane_wrap2 * 0, height - padding));
+
+                            Polygons.Add(LaneLines);
+                            PolygonsType.Add("LaneLine");
+
+                        }
+                        //Three Lane
+                        if (frmMarkingSet.nLaneNumber == 3)
+                        {
+                            LaneLines.Clear();
+                            LaneLines.Add(new Point(padding, (height / 4) * 3));
+                            LaneLines.Add(new Point(padding + lane_wrap, (height / 4) * 3));
+                            LaneLines.Add(new Point(padding + lane_wrap * 2, (height / 4) * 3));
+                            LaneLines.Add(new Point(padding + lane_wrap * 3, (height / 4) * 3));
+                            LaneLines.Add(new Point(padding + lane_wrap * 3, height - padding));
+                            LaneLines.Add(new Point(padding + lane_wrap * 2, height - padding));
+                            LaneLines.Add(new Point(padding + lane_wrap * 1, height - padding));
+                            LaneLines.Add(new Point(padding + lane_wrap * 0, height - padding));
+
+                            Polygons.Add(LaneLines);
+                            PolygonsType.Add("LaneLine");
+                        }
+
+
+                        //Four Lane
+                        if (frmMarkingSet.nLaneNumber == 4)
+                        {
+                            int lane_wrap4 = ((width - 20) / 4);
+                            LaneLines.Clear();
+                            LaneLines.Add(new Point(padding + lane_wrap4 * 0, (height / 4) * 3));
+                            LaneLines.Add(new Point(padding + lane_wrap4 * 1, (height / 4) * 3));
+                            LaneLines.Add(new Point(padding + lane_wrap4 * 2, (height / 4) * 3));
+                            LaneLines.Add(new Point(padding + lane_wrap4 * 3, (height / 4) * 3));
+                            LaneLines.Add(new Point(padding + lane_wrap4 * 4, (height / 4) * 3));
+                            LaneLines.Add(new Point(padding + lane_wrap4 * 4, height - padding));
+                            LaneLines.Add(new Point(padding + lane_wrap4 * 3, height - padding));
+                            LaneLines.Add(new Point(padding + lane_wrap4 * 2, height - padding));
+                            LaneLines.Add(new Point(padding + lane_wrap4 * 1, height - padding));
+                            LaneLines.Add(new Point(padding + lane_wrap4 * 0, height - padding));
+
+                            Polygons.Add(LaneLines);
+                            PolygonsType.Add("LaneLine");
+                        }
                     }
                     else
                     {
                         LaneLines.Clear();
-                        for (int i = 0; i < 8;i++ )
+                        for (int i = 0; i < 8; i++)
                         {
                             LaneLines.Add(new Point(-10, -10));
                         }
@@ -1283,10 +1695,10 @@ namespace TIEVision.UI.Vehicle
                         Polygons.Add(LaneLines);
                         PolygonsType.Add("LaneLine");
                     }
-                    
+
 
                     //StopLine
-                    if (frmMarkingSet.nHaveStopLine ==1)
+                    if (frmMarkingSet.nHaveStopLine == 1)
                     {
                         StopLine.Clear();
                         StopLine.Add(new Point(padding, ((height / 4) * 3) - padding));
@@ -1304,7 +1716,7 @@ namespace TIEVision.UI.Vehicle
                         Polygons.Add(StopLine);
                         PolygonsType.Add("StopLine");
                     }
-                   
+
 
                     //ZebraCrossing
 
@@ -1331,7 +1743,7 @@ namespace TIEVision.UI.Vehicle
                     }
 
                     //TrafficLights
-                    if(frmMarkingSet.nHaveTrafficLights ==1)
+                    if (frmMarkingSet.nHaveTrafficLights == 1)
                     {
                         TrafficLights.Clear();
                         TrafficLights.Add(new Point(width / 2 - padding, padding));
@@ -1351,13 +1763,11 @@ namespace TIEVision.UI.Vehicle
                         Polygons.Add(TrafficLights);
                         PolygonsType.Add("TrafficLights");
                     }
-                    
-
 
                 }
             }
         }
-       
+
 
     }
 }

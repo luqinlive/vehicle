@@ -62,6 +62,47 @@ namespace IRVision.DAL
             return mList;
         }
 
+        public int AddCrossing(string crossId , string crossName)
+        {
+            int ret = -1;
+
+            string strSql = "insert into  tb_crossing(CROSSING_ID, CROSSING_NAME,CREATE_TIME) values('" + 
+                crossId + "','" + crossName + "','" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")+"')";
+
+            MySqlDbHelper dbHelper = new MySqlDbHelper();
+            dbHelper.Connect();
+            ret = dbHelper.ExecuteNonQuery(strSql);
+            dbHelper.Close();
+            return ret;
+        }
+
+        public int UpdateCrossing(string crossId, string crossName,string id)
+        {
+            int ret = -1;
+
+            string strSql = "update tb_crossing set CROSSING_ID='" +  crossId + "',CROSSING_NAME = '" + crossName + "' where id = "+id;
+
+            MySqlDbHelper dbHelper = new MySqlDbHelper();
+            dbHelper.Connect();
+            ret = dbHelper.ExecuteNonQuery(strSql);
+            dbHelper.Close();
+            return ret;
+        }
+
+
+        public int DeleteCrossing(string id)
+        {
+            int ret = -1;
+
+            string strSql = "delete from tb_crossing where ID = " + id;
+
+            MySqlDbHelper dbHelper = new MySqlDbHelper();
+            dbHelper.Connect();
+            ret = dbHelper.ExecuteNonQuery(strSql);
+            dbHelper.Close();
+            return ret;
+        }
+
         private CrossingInfo DataRowToModel(DataRow row)
         {
             CrossingInfo model = new CrossingInfo();

@@ -92,6 +92,9 @@ namespace TIEVision
 
                 this.xtraTabControl1.SelectedTabPage = xtraTabPage6;
 
+                this.xtraTabPage8.PageVisible = false;
+
+                /*
                 try
                 {
                     bool isExist = ServiceHelper.IsServiceExisted("HCarRegWorker");
@@ -108,7 +111,8 @@ namespace TIEVision
                 catch (Exception ex)
                 {
                     LogHelper.WriteLog(typeof(FrmMain), ex.Message);
-                }                
+                }   
+                 * */
             }
             else if( nIndex =="1")
             {             

@@ -74,5 +74,43 @@ namespace IRVision.UI.Vehicle
             catch { }
         }
 
+        private void simpleBtnAdd_Click(object sender, EventArgs e)
+        {
+            FrmCrossingAdd frmCrossingAdd = new FrmCrossingAdd();
+            frmCrossingAdd.ShowDialog();
+            if (frmCrossingAdd.DialogResult == System.Windows.Forms.DialogResult.OK)
+            {
+                loadData();
+            }
+        }
+
+        private void simpleBtnDelete_Click(object sender, EventArgs e)
+        {
+            if (XtraMessageBox.Show("确认删除!", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            {
+                int nIndex = this.gridView1.FocusedRowHandle;
+                CrossingInfo delCross = mCrossingList[nIndex];
+
+                int  retVal = dal.DeleteCrossing(delCross.ID);
+                if (retVal>=0)
+                {
+                    loadData();
+                }
+            }
+        }
+
+        private void simpleBtnModify_Click(object sender, EventArgs e)
+        {
+            int nIndex = this.gridView1.FocusedRowHandle;
+            CrossingInfo modifyCross = mCrossingList[nIndex];
+            FrmCrossingAdd frmCrossInfoAdd = new FrmCrossingAdd();
+            frmCrossInfoAdd.setModifiedCross(modifyCross);
+            frmCrossInfoAdd.ShowDialog();
+            if (frmCrossInfoAdd.DialogResult == System.Windows.Forms.DialogResult.OK)
+            {
+                loadData();
+            }
+        }
+
     }
 }

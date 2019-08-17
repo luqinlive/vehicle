@@ -38,9 +38,15 @@
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.simpleButtonRefresh = new DevExpress.XtraEditors.SimpleButton();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.simpleBtnDelete = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleBtnModify = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleBtnAdd = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            this.panelControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // gridControl1
@@ -49,12 +55,12 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gridControl1.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridControl1.Location = new System.Drawing.Point(3, 61);
+            this.gridControl1.Location = new System.Drawing.Point(5, 57);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1});
-            this.gridControl1.Size = new System.Drawing.Size(1117, 752);
+            this.gridControl1.Size = new System.Drawing.Size(1112, 744);
             this.gridControl1.TabIndex = 12;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -148,26 +154,73 @@
             // 
             this.simpleButtonRefresh.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.simpleButtonRefresh.Appearance.Options.UseFont = true;
-            this.simpleButtonRefresh.Location = new System.Drawing.Point(12, 21);
+            this.simpleButtonRefresh.Location = new System.Drawing.Point(282, 16);
             this.simpleButtonRefresh.Name = "simpleButtonRefresh";
             this.simpleButtonRefresh.Size = new System.Drawing.Size(84, 24);
             this.simpleButtonRefresh.TabIndex = 13;
             this.simpleButtonRefresh.Text = "刷新";
             this.simpleButtonRefresh.Click += new System.EventHandler(this.simpleButtonRefresh_Click);
             // 
+            // panelControl1
+            // 
+            this.panelControl1.Controls.Add(this.simpleBtnDelete);
+            this.panelControl1.Controls.Add(this.simpleBtnModify);
+            this.panelControl1.Controls.Add(this.simpleBtnAdd);
+            this.panelControl1.Controls.Add(this.simpleButtonRefresh);
+            this.panelControl1.Controls.Add(this.gridControl1);
+            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl1.Location = new System.Drawing.Point(0, 0);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(1122, 813);
+            this.panelControl1.TabIndex = 14;
+            // 
+            // simpleBtnDelete
+            // 
+            this.simpleBtnDelete.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.simpleBtnDelete.Appearance.Options.UseFont = true;
+            this.simpleBtnDelete.Location = new System.Drawing.Point(192, 16);
+            this.simpleBtnDelete.Name = "simpleBtnDelete";
+            this.simpleBtnDelete.Size = new System.Drawing.Size(84, 24);
+            this.simpleBtnDelete.TabIndex = 16;
+            this.simpleBtnDelete.Text = "删除";
+            this.simpleBtnDelete.Click += new System.EventHandler(this.simpleBtnDelete_Click);
+            // 
+            // simpleBtnModify
+            // 
+            this.simpleBtnModify.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.simpleBtnModify.Appearance.Options.UseFont = true;
+            this.simpleBtnModify.Location = new System.Drawing.Point(102, 16);
+            this.simpleBtnModify.Name = "simpleBtnModify";
+            this.simpleBtnModify.Size = new System.Drawing.Size(84, 24);
+            this.simpleBtnModify.TabIndex = 15;
+            this.simpleBtnModify.Text = " 修改";
+            this.simpleBtnModify.Click += new System.EventHandler(this.simpleBtnModify_Click);
+            // 
+            // simpleBtnAdd
+            // 
+            this.simpleBtnAdd.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.simpleBtnAdd.Appearance.Options.UseFont = true;
+            this.simpleBtnAdd.Location = new System.Drawing.Point(12, 16);
+            this.simpleBtnAdd.Name = "simpleBtnAdd";
+            this.simpleBtnAdd.Size = new System.Drawing.Size(84, 24);
+            this.simpleBtnAdd.TabIndex = 14;
+            this.simpleBtnAdd.Text = "添加";
+            this.simpleBtnAdd.Click += new System.EventHandler(this.simpleBtnAdd_Click);
+            // 
             // FrmCrossing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1122, 813);
-            this.Controls.Add(this.simpleButtonRefresh);
-            this.Controls.Add(this.gridControl1);
+            this.Controls.Add(this.panelControl1);
             this.Name = "FrmCrossing";
             this.Text = "FrmCrossing";
             this.Load += new System.EventHandler(this.FrmCrossing_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
+            this.panelControl1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -184,5 +237,9 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private DevExpress.XtraEditors.SimpleButton simpleButtonRefresh;
+        private DevExpress.XtraEditors.PanelControl panelControl1;
+        private DevExpress.XtraEditors.SimpleButton simpleBtnAdd;
+        private DevExpress.XtraEditors.SimpleButton simpleBtnDelete;
+        private DevExpress.XtraEditors.SimpleButton simpleBtnModify;
     }
 }

@@ -34,13 +34,7 @@ namespace IRVision.UI.Vehicle
 
         private void FrmMarkingSet_Load(object sender, EventArgs e)
         {
-            nScreenMode = 4;
-            nLaneNumber = 3;
-            nHaveLaneLine = 1;
-            nHaveStopLine = 1;
-            nHaveTrafficLights = 1;
-            nHaveZebra = 1;
-            nCropHeight = 0;
+            
 
             mScreenModeList = TargetTypeList.GetInstance().mScreenModeList;
             comboBoxEditScreenMode.Properties.Items.Clear();

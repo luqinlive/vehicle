@@ -270,6 +270,12 @@
     <Compile Include="UI\Vehicle\FrmCrossing.Designer.cs">
       <DependentUpon>FrmCrossing.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Vehicle\FrmCrossingAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Vehicle\FrmCrossingAdd.Designer.cs">
+      <DependentUpon>FrmCrossingAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Vehicle\FrmMarking.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -343,6 +349,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Vehicle\FrmCrossing.resx">
       <DependentUpon>FrmCrossing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Vehicle\FrmCrossingAdd.resx">
+      <DependentUpon>FrmCrossingAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Vehicle\FrmMarking.resx">
       <DependentUpon>FrmMarking.cs</DependentUpon>
