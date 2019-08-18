@@ -219,6 +219,17 @@ namespace TIEVision.UI.Vehicle
         // The add point cursor.
         private Cursor AddPointCursor;
 
+        //TrafficLights
+        private int _x, _y;
+        Image _img = null;
+        bool _selecting = false;
+        Rectangle _selection;
+        Rectangle selectionPic;
+        private Point startPos;
+        private Point currentPos;
+        private bool drawing;
+
+
         private void pictureEdit1_MouseDown(object sender, MouseEventArgs e)
         {
             // See what we're over.
@@ -226,6 +237,18 @@ namespace TIEVision.UI.Vehicle
             List<Point> hit_polygon;
             int hit_point, hit_point2;
             Point closest_point;
+
+            if (checkEdit_TrafficLightsResize.Checked == true)
+            {
+                if (e.Button == MouseButtons.Left)
+                {
+                    _selecting = true;
+                    _selection = new Rectangle(new Point(e.X, e.Y), new Size());
+
+                    currentPos = startPos = e.Location;
+                    drawing = true;
+                }
+            }
 
             if (NewPolygon != null)
             {
@@ -303,8 +326,78 @@ namespace TIEVision.UI.Vehicle
             pictureEdit3.Invalidate();
         }
 
+        private Rectangle GetRectangle()
+        {
+            return new Rectangle(
+                Math.Min(startPos.X, currentPos.X),
+                Math.Min(startPos.Y, currentPos.Y),
+                Math.Abs(startPos.X - currentPos.X),
+                Math.Abs(startPos.Y - currentPos.Y)
+                );
+        }
+
+        FrmMarkingTraffic frmMarkingTraffic = new FrmMarkingTraffic();
         private void pictureEdit1_MouseUp(object sender, MouseEventArgs e)
         {
+            if(checkEdit_TrafficLightsResize.Checked == true)
+            {
+                if (drawing)
+                {
+                    drawing = false;
+                    var rect = GetRectangle();
+                    Rectangle clipRect = ScreenToPic(rect);
+                    Image img1 = cropImage(pictureEdit1.Image, clipRect);
+                    List<List<Point>> clipPolygons = new List<List<Point>>();
+                    for (int i = 0; i < Polygons.Count; i++)
+                    {
+
+                        if (PolygonsType[i] == "TrafficLights")
+                        {
+                            List<Point> mClipPoints = new List<Point>();
+                            List<Point> mTrafficLights = Polygons[i];
+                            List<Point> mPicTrafficLightsPoints = ScreenPointToPicture(mTrafficLights);
+                            foreach(var point1 in mPicTrafficLightsPoints)
+                            {
+                               Point pointClip =new Point(point1.X - clipRect.X,point1.Y - clipRect.Y);
+                               mClipPoints.Add(pointClip);
+                            }
+                            clipPolygons.Add(mClipPoints);
+                        }
+                    }
+                    frmMarkingTraffic.mClipPolygons = clipPolygons;
+                    frmMarkingTraffic.SetClipImage(img1);
+                    frmMarkingTraffic.ShowDialog();
+                    if (frmMarkingTraffic.DialogResult == System.Windows.Forms.DialogResult.OK)
+                    {
+                        var items = frmMarkingTraffic.mClipPolygons;
+                        List<List<Point>> clipPolygons1 = new List<List<Point>>();
+                        foreach(var points in frmMarkingTraffic.mClipPolygons)
+                        {
+                            List<Point> mPicTrafficLightsPoints1 = new List<Point>();
+                            foreach(var point in points)
+                            {
+                                Point pointClip1 = new Point(point.X + clipRect.X, point.Y + clipRect.Y);
+                                mPicTrafficLightsPoints1.Add(pointClip1);
+                            }
+                            clipPolygons1.Add(mPicTrafficLightsPoints1);
+                        }
+                        Console.WriteLine(clipPolygons1.Count);
+                        for (int i = 0; i < 4; i++ )
+                        {
+                            Polygons.RemoveAt(Polygons.Count - 1);
+
+                        }
+                        for (int i = 0; i < 4; i++)
+                        {
+                            Polygons.Add(PicturePointToScreen(clipPolygons1[i]));
+
+                        }
+                         
+                    }
+
+                }
+            }
+           
             pictureEdit2.Invalidate();
             pictureEdit3.Invalidate();
         }
@@ -398,6 +491,26 @@ namespace TIEVision.UI.Vehicle
             }
         }
 
+        private void pictureEdit1_MouseMove(object sender, MouseEventArgs e)
+        {
+            //TrafficLightResize
+            if (_selecting)
+            {
+                _selection.Width = (e.X - _selection.X);
+                _selection.Height = (e.Y - _selection.Y);
+
+                // Redraw the picturebox:
+                pictureEdit1.Refresh();
+            }
+
+            currentPos = e.Location;
+            if (drawing)
+            {
+                pictureEdit1.Invalidate();
+            }
+        }
+
+
         private void pictureEdit1_Paint(object sender, PaintEventArgs e)
         {
             //var g2 = pictureEdit2.CreateGraphics();
@@ -470,6 +583,17 @@ namespace TIEVision.UI.Vehicle
                             NewPolygon[NewPolygon.Count - 1],
                             NewPoint);
                     }
+                }
+            }
+            //TrafficLightResize
+            Pen pen = new Pen(Color.Red, 1);
+            pen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
+
+            if(checkEdit_TrafficLightsResize.Checked == true)
+            {
+                if (drawing  )
+                {
+                    e.Graphics.DrawRectangle(pen, GetRectangle());
                 }
             }
         }
@@ -699,6 +823,23 @@ namespace TIEVision.UI.Vehicle
                 mConvertPoint.Add(new Point(_x, _y));
             }
             return mConvertPoint;
+        }
+
+        private Rectangle PicToScreen(Rectangle rect)
+        {
+            int _width = (int)(Math.Round(rect.Width / scaleX));
+            int _height = (int)(Math.Round(rect.Height / scaleY));
+            int _xp = (int)(Math.Round(rect.X / scaleX));
+            int _yp = (int)(Math.Round(rect.Y / scaleY));
+            return new Rectangle(new Point(_xp, _yp), new Size(_width, _height));
+        }
+        private Rectangle ScreenToPic(Rectangle rect)
+        {
+            int _width = (int)(Math.Round(rect.Width * scaleX));
+            int _height = (int)(Math.Round(rect.Height * scaleY));
+            int _xs = (int)(Math.Round(rect.X * scaleX));
+            int _ys = (int)(Math.Round(rect.Y * scaleY));
+            return new Rectangle(new Point(_xs, _ys), new Size(_width, _height));
         }
 
         public Point PicturePointToScreen(Point points)
@@ -2202,6 +2343,7 @@ namespace TIEVision.UI.Vehicle
             }
         }
 
+        
 
     }
 }

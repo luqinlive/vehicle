@@ -31,6 +31,7 @@
             this.simpleButtonChoosePic = new DevExpress.XtraEditors.SimpleButton();
             this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.simpleBtnParams = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonRefresh = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonSave = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
@@ -38,7 +39,7 @@
             this.pictureEdit4 = new DevExpress.XtraEditors.PictureEdit();
             this.pictureEdit3 = new DevExpress.XtraEditors.PictureEdit();
             this.pictureEdit2 = new DevExpress.XtraEditors.PictureEdit();
-            this.simpleBtnParams = new DevExpress.XtraEditors.SimpleButton();
+            this.checkEdit_TrafficLightsResize = new DevExpress.XtraEditors.CheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -46,6 +47,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit4.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit_TrafficLightsResize.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // simpleButtonChoosePic
@@ -70,10 +72,12 @@
             this.pictureEdit1.TabIndex = 3;
             this.pictureEdit1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureEdit1_Paint);
             this.pictureEdit1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureEdit1_MouseDown);
+            this.pictureEdit1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureEdit1_MouseMove);
             this.pictureEdit1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureEdit1_MouseUp);
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.checkEdit_TrafficLightsResize);
             this.panelControl1.Controls.Add(this.simpleBtnParams);
             this.panelControl1.Controls.Add(this.simpleButtonRefresh);
             this.panelControl1.Controls.Add(this.simpleButtonSave);
@@ -90,6 +94,17 @@
             this.panelControl1.Size = new System.Drawing.Size(1070, 803);
             this.panelControl1.TabIndex = 4;
             this.panelControl1.Resize += new System.EventHandler(this.panelControl1_Resize);
+            // 
+            // simpleBtnParams
+            // 
+            this.simpleBtnParams.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.simpleBtnParams.Appearance.Options.UseFont = true;
+            this.simpleBtnParams.Location = new System.Drawing.Point(220, 26);
+            this.simpleBtnParams.Name = "simpleBtnParams";
+            this.simpleBtnParams.Size = new System.Drawing.Size(84, 24);
+            this.simpleBtnParams.TabIndex = 16;
+            this.simpleBtnParams.Text = "参数设置";
+            this.simpleBtnParams.Click += new System.EventHandler(this.simpleBtnParams_Click);
             // 
             // simpleButtonRefresh
             // 
@@ -167,16 +182,15 @@
             this.pictureEdit2.TabIndex = 4;
             this.pictureEdit2.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureEdit2_Paint);
             // 
-            // simpleBtnParams
+            // checkEdit_TrafficLightsResize
             // 
-            this.simpleBtnParams.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.simpleBtnParams.Appearance.Options.UseFont = true;
-            this.simpleBtnParams.Location = new System.Drawing.Point(220, 26);
-            this.simpleBtnParams.Name = "simpleBtnParams";
-            this.simpleBtnParams.Size = new System.Drawing.Size(84, 24);
-            this.simpleBtnParams.TabIndex = 16;
-            this.simpleBtnParams.Text = "参数设置";
-            this.simpleBtnParams.Click += new System.EventHandler(this.simpleBtnParams_Click);
+            this.checkEdit_TrafficLightsResize.Location = new System.Drawing.Point(580, 27);
+            this.checkEdit_TrafficLightsResize.Name = "checkEdit_TrafficLightsResize";
+            this.checkEdit_TrafficLightsResize.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkEdit_TrafficLightsResize.Properties.Appearance.Options.UseFont = true;
+            this.checkEdit_TrafficLightsResize.Properties.Caption = "红绿灯调整";
+            this.checkEdit_TrafficLightsResize.Size = new System.Drawing.Size(105, 21);
+            this.checkEdit_TrafficLightsResize.TabIndex = 17;
             // 
             // FrmMarking
             // 
@@ -195,6 +209,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit4.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit_TrafficLightsResize.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -212,5 +227,6 @@
         private DevExpress.XtraEditors.SimpleButton simpleButtonSave;
         private DevExpress.XtraEditors.SimpleButton simpleButtonRefresh;
         private DevExpress.XtraEditors.SimpleButton simpleBtnParams;
+        private DevExpress.XtraEditors.CheckEdit checkEdit_TrafficLightsResize;
     }
 }
