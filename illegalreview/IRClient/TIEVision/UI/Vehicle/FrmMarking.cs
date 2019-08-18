@@ -47,7 +47,7 @@ namespace TIEVision.UI.Vehicle
         {
             FrmCrossing.ShowCrossInfo += new FrmCrossing.ShowCrossEventHandler(ShowMsgInfo);
             AddPointCursor = new Cursor(IRVision.Properties.Resources.add_point.GetHicon());
-
+            //frmMarkingSet.Hide();
             InitParams();
             loadData();
         }
@@ -71,6 +71,12 @@ namespace TIEVision.UI.Vehicle
             frmMarkingSet.nTrafficNumber2 = 0;
             frmMarkingSet.nTrafficNumber3 = 0;
             frmMarkingSet.nTrafficNumber4 = 0;
+
+
+            frmMarkingSet.nLaneNumber1 = 1;
+            frmMarkingSet.nLaneNumber2 = 0;
+            frmMarkingSet.nLaneNumber3 = 0;
+            frmMarkingSet.nLaneNumber4 = 0;
 
             frmMarkingSet.SetControlStatus();
         }
@@ -830,6 +836,14 @@ namespace TIEVision.UI.Vehicle
                             config.LaneLine.LinePosition.Add(line2);
 
                         }
+                        if(null == config.LaneLine.LaneType)
+                        {
+                            config.LaneLine.LaneType = new List<string>();
+                        }
+                        config.LaneLine.LaneType.Add(frmMarkingSet.nLaneNumber1+"," + frmMarkingSet.mLaneType1);
+                        config.LaneLine.LaneType.Add(frmMarkingSet.nLaneNumber2 + "," + frmMarkingSet.mLaneType2);
+                        config.LaneLine.LaneType.Add(frmMarkingSet.nLaneNumber3 + "," + frmMarkingSet.mLaneType3);
+                        config.LaneLine.LaneType.Add(frmMarkingSet.nLaneNumber4 + "," + frmMarkingSet.mLaneType4);
                     }
                     else
                     {
@@ -848,7 +862,14 @@ namespace TIEVision.UI.Vehicle
                             {
                                 config.LaneLine.LinePosition.Add(line1);
                             }
-
+                            if (null == config.LaneLine.LaneType)
+                            {
+                                config.LaneLine.LaneType = new List<string>();
+                            }
+                            config.LaneLine.LaneType.Add("0,null,null");
+                            config.LaneLine.LaneType.Add("0,null,null");
+                            config.LaneLine.LaneType.Add("0,null,null");
+                            config.LaneLine.LaneType.Add("0,null,null");
 
                         }
                     }
@@ -1288,6 +1309,38 @@ namespace TIEVision.UI.Vehicle
                                 LaneLines.Add(PicturePointToScreen(new Point(position.X, position.Y)));
                                 Polygons.Add(LaneLines);
                                 PolygonsType.Add("LaneLine");
+                            }
+
+                            //LaneType
+                            if(dbConfig.LaneLine.LaneType != null)
+                            {
+                                for(int n =0;n < dbConfig.LaneLine.LaneType.Count;n++)
+                                {
+                                    string[] laneTypeParams =   dbConfig.LaneLine.LaneType[n].Split(',');
+                                    if(laneTypeParams.Length >0)
+                                    {
+                                        if(n == 0)
+                                        {
+                                            frmMarkingSet.nLaneNumber1 = Convert.ToInt32(laneTypeParams[0]);
+                                            frmMarkingSet.mLaneType1 = laneTypeParams[1] + "," + laneTypeParams[2];
+                                        }
+                                        if (n == 1)
+                                        {
+                                            frmMarkingSet.nLaneNumber2 = Convert.ToInt32(laneTypeParams[0]);
+                                            frmMarkingSet.mLaneType2 = laneTypeParams[1] + "," + laneTypeParams[2];
+                                        }
+                                        if (n == 2)
+                                        {
+                                            frmMarkingSet.nLaneNumber3 = Convert.ToInt32(laneTypeParams[0]);
+                                            frmMarkingSet.mLaneType3 = laneTypeParams[1] + "," + laneTypeParams[2];
+                                        }
+                                        if (n == 3)
+                                        {
+                                            frmMarkingSet.nLaneNumber4 = Convert.ToInt32(laneTypeParams[0]);
+                                            frmMarkingSet.mLaneType4 = laneTypeParams[1] + "," + laneTypeParams[2];
+                                        }
+                                    }
+                                }
                             }
 
                         }

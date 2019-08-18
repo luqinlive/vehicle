@@ -28,6 +28,7 @@ namespace TIEVision.Model
         public static List<HSysDictInfo> mMbysList = new List<HSysDictInfo>();
         public List<HSysDictInfo> mScreenModeList = new List<HSysDictInfo>();
         public List<HSysDictInfo> mLaneNumberList = new List<HSysDictInfo>();
+        public List<HSysDictInfo> mLaneTypeList = new List<HSysDictInfo>();
         private static TargetTypeList mContext = null;
         TargetTypeList()
         {
@@ -201,6 +202,34 @@ namespace TIEVision.Model
                 model.SYSDICT_CODE = "4"; model.SYSDICT_NAME = "四车道";
                 mLaneNumberList.Add(model);
             }
+
+            //LaneType
+            {
+                HSysDictInfo model = new HSysDictInfo();
+                model.SYSDICT_CODE = "1"; model.SYSDICT_NAME = "直行车道";
+                mLaneTypeList.Add(model);
+            }
+            {
+                HSysDictInfo model = new HSysDictInfo();
+                model.SYSDICT_CODE = "2"; model.SYSDICT_NAME = "右转车道";
+                mLaneTypeList.Add(model);
+            }
+            {
+                HSysDictInfo model = new HSysDictInfo();
+                model.SYSDICT_CODE = "3"; model.SYSDICT_NAME = "左转车道";
+                mLaneTypeList.Add(model);
+            }
+            {
+                HSysDictInfo model = new HSysDictInfo();
+                model.SYSDICT_CODE = "4"; model.SYSDICT_NAME = "直行和右转";
+                mLaneTypeList.Add(model);
+            }
+            {
+                HSysDictInfo model = new HSysDictInfo();
+                model.SYSDICT_CODE = "5"; model.SYSDICT_NAME = "直行和左转";
+                mLaneTypeList.Add(model);
+            }
+
 
         }
 

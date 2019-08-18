@@ -52,14 +52,14 @@
             this.checkEdit_Lane2 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit_Lane3 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit_Lane4 = new DevExpress.XtraEditors.CheckEdit();
-            this.comboBoxEdit2 = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.comboBoxEdit3 = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.comboBoxEdit4 = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.comboBoxEdit5 = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.comboBoxEdit6 = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.comboBoxEdit7 = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.comboBoxEdit8 = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.comboBoxEdit9 = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.comboBoxEdit_LaneType1 = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.comboBoxEdit_LaneType2 = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.comboBoxEdit_LaneType3 = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.comboBoxEdit_LaneType4 = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.comboBoxEdit_TrafficLane4 = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.comboBoxEdit_TrafficLane3 = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.comboBoxEdit_TrafficLane2 = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.comboBoxEdit_TrafficLane1 = new DevExpress.XtraEditors.ComboBoxEdit();
             this.checkEdit_TrafficLights4 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit_TrafficLights3 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit_TrafficLights2 = new DevExpress.XtraEditors.CheckEdit();
@@ -86,14 +86,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit_Lane2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit_Lane3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit_Lane4.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit3.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit4.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit5.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit6.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit7.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit8.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit9.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit_LaneType1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit_LaneType2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit_LaneType3.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit_LaneType4.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit_TrafficLane4.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit_TrafficLane3.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit_TrafficLane2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit_TrafficLane1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit_TrafficLights4.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit_TrafficLights3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit_TrafficLights2.Properties)).BeginInit();
@@ -342,109 +342,109 @@
             this.checkEdit_Lane4.Size = new System.Drawing.Size(69, 21);
             this.checkEdit_Lane4.TabIndex = 35;
             // 
-            // comboBoxEdit2
+            // comboBoxEdit_LaneType1
             // 
-            this.comboBoxEdit2.EditValue = "";
-            this.comboBoxEdit2.Location = new System.Drawing.Point(406, 86);
-            this.comboBoxEdit2.Name = "comboBoxEdit2";
-            this.comboBoxEdit2.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxEdit2.Properties.Appearance.Options.UseFont = true;
-            this.comboBoxEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.comboBoxEdit_LaneType1.EditValue = "";
+            this.comboBoxEdit_LaneType1.Location = new System.Drawing.Point(406, 86);
+            this.comboBoxEdit_LaneType1.Name = "comboBoxEdit_LaneType1";
+            this.comboBoxEdit_LaneType1.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxEdit_LaneType1.Properties.Appearance.Options.UseFont = true;
+            this.comboBoxEdit_LaneType1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit2.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.comboBoxEdit2.Size = new System.Drawing.Size(98, 24);
-            this.comboBoxEdit2.TabIndex = 36;
+            this.comboBoxEdit_LaneType1.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.comboBoxEdit_LaneType1.Size = new System.Drawing.Size(98, 24);
+            this.comboBoxEdit_LaneType1.TabIndex = 36;
             // 
-            // comboBoxEdit3
+            // comboBoxEdit_LaneType2
             // 
-            this.comboBoxEdit3.EditValue = "";
-            this.comboBoxEdit3.Location = new System.Drawing.Point(516, 86);
-            this.comboBoxEdit3.Name = "comboBoxEdit3";
-            this.comboBoxEdit3.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxEdit3.Properties.Appearance.Options.UseFont = true;
-            this.comboBoxEdit3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.comboBoxEdit_LaneType2.EditValue = "";
+            this.comboBoxEdit_LaneType2.Location = new System.Drawing.Point(516, 86);
+            this.comboBoxEdit_LaneType2.Name = "comboBoxEdit_LaneType2";
+            this.comboBoxEdit_LaneType2.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxEdit_LaneType2.Properties.Appearance.Options.UseFont = true;
+            this.comboBoxEdit_LaneType2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit3.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.comboBoxEdit3.Size = new System.Drawing.Size(98, 24);
-            this.comboBoxEdit3.TabIndex = 37;
+            this.comboBoxEdit_LaneType2.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.comboBoxEdit_LaneType2.Size = new System.Drawing.Size(98, 24);
+            this.comboBoxEdit_LaneType2.TabIndex = 37;
             // 
-            // comboBoxEdit4
+            // comboBoxEdit_LaneType3
             // 
-            this.comboBoxEdit4.EditValue = "";
-            this.comboBoxEdit4.Location = new System.Drawing.Point(626, 86);
-            this.comboBoxEdit4.Name = "comboBoxEdit4";
-            this.comboBoxEdit4.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxEdit4.Properties.Appearance.Options.UseFont = true;
-            this.comboBoxEdit4.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.comboBoxEdit_LaneType3.EditValue = "";
+            this.comboBoxEdit_LaneType3.Location = new System.Drawing.Point(626, 86);
+            this.comboBoxEdit_LaneType3.Name = "comboBoxEdit_LaneType3";
+            this.comboBoxEdit_LaneType3.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxEdit_LaneType3.Properties.Appearance.Options.UseFont = true;
+            this.comboBoxEdit_LaneType3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit4.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.comboBoxEdit4.Size = new System.Drawing.Size(98, 24);
-            this.comboBoxEdit4.TabIndex = 38;
+            this.comboBoxEdit_LaneType3.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.comboBoxEdit_LaneType3.Size = new System.Drawing.Size(98, 24);
+            this.comboBoxEdit_LaneType3.TabIndex = 38;
             // 
-            // comboBoxEdit5
+            // comboBoxEdit_LaneType4
             // 
-            this.comboBoxEdit5.EditValue = "";
-            this.comboBoxEdit5.Location = new System.Drawing.Point(736, 86);
-            this.comboBoxEdit5.Name = "comboBoxEdit5";
-            this.comboBoxEdit5.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxEdit5.Properties.Appearance.Options.UseFont = true;
-            this.comboBoxEdit5.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.comboBoxEdit_LaneType4.EditValue = "";
+            this.comboBoxEdit_LaneType4.Location = new System.Drawing.Point(736, 86);
+            this.comboBoxEdit_LaneType4.Name = "comboBoxEdit_LaneType4";
+            this.comboBoxEdit_LaneType4.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxEdit_LaneType4.Properties.Appearance.Options.UseFont = true;
+            this.comboBoxEdit_LaneType4.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit5.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.comboBoxEdit5.Size = new System.Drawing.Size(98, 24);
-            this.comboBoxEdit5.TabIndex = 39;
+            this.comboBoxEdit_LaneType4.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.comboBoxEdit_LaneType4.Size = new System.Drawing.Size(98, 24);
+            this.comboBoxEdit_LaneType4.TabIndex = 39;
             // 
-            // comboBoxEdit6
+            // comboBoxEdit_TrafficLane4
             // 
-            this.comboBoxEdit6.EditValue = "";
-            this.comboBoxEdit6.Location = new System.Drawing.Point(736, 152);
-            this.comboBoxEdit6.Name = "comboBoxEdit6";
-            this.comboBoxEdit6.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxEdit6.Properties.Appearance.Options.UseFont = true;
-            this.comboBoxEdit6.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.comboBoxEdit_TrafficLane4.EditValue = "";
+            this.comboBoxEdit_TrafficLane4.Location = new System.Drawing.Point(736, 152);
+            this.comboBoxEdit_TrafficLane4.Name = "comboBoxEdit_TrafficLane4";
+            this.comboBoxEdit_TrafficLane4.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxEdit_TrafficLane4.Properties.Appearance.Options.UseFont = true;
+            this.comboBoxEdit_TrafficLane4.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit6.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.comboBoxEdit6.Size = new System.Drawing.Size(98, 24);
-            this.comboBoxEdit6.TabIndex = 48;
+            this.comboBoxEdit_TrafficLane4.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.comboBoxEdit_TrafficLane4.Size = new System.Drawing.Size(98, 24);
+            this.comboBoxEdit_TrafficLane4.TabIndex = 48;
             // 
-            // comboBoxEdit7
+            // comboBoxEdit_TrafficLane3
             // 
-            this.comboBoxEdit7.EditValue = "";
-            this.comboBoxEdit7.Location = new System.Drawing.Point(626, 152);
-            this.comboBoxEdit7.Name = "comboBoxEdit7";
-            this.comboBoxEdit7.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxEdit7.Properties.Appearance.Options.UseFont = true;
-            this.comboBoxEdit7.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.comboBoxEdit_TrafficLane3.EditValue = "";
+            this.comboBoxEdit_TrafficLane3.Location = new System.Drawing.Point(626, 152);
+            this.comboBoxEdit_TrafficLane3.Name = "comboBoxEdit_TrafficLane3";
+            this.comboBoxEdit_TrafficLane3.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxEdit_TrafficLane3.Properties.Appearance.Options.UseFont = true;
+            this.comboBoxEdit_TrafficLane3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit7.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.comboBoxEdit7.Size = new System.Drawing.Size(98, 24);
-            this.comboBoxEdit7.TabIndex = 47;
+            this.comboBoxEdit_TrafficLane3.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.comboBoxEdit_TrafficLane3.Size = new System.Drawing.Size(98, 24);
+            this.comboBoxEdit_TrafficLane3.TabIndex = 47;
             // 
-            // comboBoxEdit8
+            // comboBoxEdit_TrafficLane2
             // 
-            this.comboBoxEdit8.EditValue = "";
-            this.comboBoxEdit8.Location = new System.Drawing.Point(516, 152);
-            this.comboBoxEdit8.Name = "comboBoxEdit8";
-            this.comboBoxEdit8.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxEdit8.Properties.Appearance.Options.UseFont = true;
-            this.comboBoxEdit8.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.comboBoxEdit_TrafficLane2.EditValue = "";
+            this.comboBoxEdit_TrafficLane2.Location = new System.Drawing.Point(516, 152);
+            this.comboBoxEdit_TrafficLane2.Name = "comboBoxEdit_TrafficLane2";
+            this.comboBoxEdit_TrafficLane2.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxEdit_TrafficLane2.Properties.Appearance.Options.UseFont = true;
+            this.comboBoxEdit_TrafficLane2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit8.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.comboBoxEdit8.Size = new System.Drawing.Size(98, 24);
-            this.comboBoxEdit8.TabIndex = 46;
+            this.comboBoxEdit_TrafficLane2.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.comboBoxEdit_TrafficLane2.Size = new System.Drawing.Size(98, 24);
+            this.comboBoxEdit_TrafficLane2.TabIndex = 46;
             // 
-            // comboBoxEdit9
+            // comboBoxEdit_TrafficLane1
             // 
-            this.comboBoxEdit9.EditValue = "";
-            this.comboBoxEdit9.Location = new System.Drawing.Point(406, 152);
-            this.comboBoxEdit9.Name = "comboBoxEdit9";
-            this.comboBoxEdit9.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxEdit9.Properties.Appearance.Options.UseFont = true;
-            this.comboBoxEdit9.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.comboBoxEdit_TrafficLane1.EditValue = "";
+            this.comboBoxEdit_TrafficLane1.Location = new System.Drawing.Point(406, 152);
+            this.comboBoxEdit_TrafficLane1.Name = "comboBoxEdit_TrafficLane1";
+            this.comboBoxEdit_TrafficLane1.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxEdit_TrafficLane1.Properties.Appearance.Options.UseFont = true;
+            this.comboBoxEdit_TrafficLane1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit9.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.comboBoxEdit9.Size = new System.Drawing.Size(98, 24);
-            this.comboBoxEdit9.TabIndex = 45;
+            this.comboBoxEdit_TrafficLane1.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.comboBoxEdit_TrafficLane1.Size = new System.Drawing.Size(98, 24);
+            this.comboBoxEdit_TrafficLane1.TabIndex = 45;
             // 
             // checkEdit_TrafficLights4
             // 
@@ -545,19 +545,19 @@
             this.Controls.Add(this.textEdit_CropHeight);
             this.Controls.Add(this.simpleBtnCancel);
             this.Controls.Add(this.simpleBtnSave);
-            this.Controls.Add(this.comboBoxEdit6);
-            this.Controls.Add(this.comboBoxEdit7);
-            this.Controls.Add(this.comboBoxEdit8);
-            this.Controls.Add(this.comboBoxEdit9);
+            this.Controls.Add(this.comboBoxEdit_TrafficLane4);
+            this.Controls.Add(this.comboBoxEdit_TrafficLane3);
+            this.Controls.Add(this.comboBoxEdit_TrafficLane2);
+            this.Controls.Add(this.comboBoxEdit_TrafficLane1);
             this.Controls.Add(this.checkEdit_TrafficLights4);
             this.Controls.Add(this.checkEdit_TrafficLights3);
             this.Controls.Add(this.checkEdit_TrafficLights2);
             this.Controls.Add(this.checkEdit_TrafficLights1);
             this.Controls.Add(this.labelControl8);
-            this.Controls.Add(this.comboBoxEdit5);
-            this.Controls.Add(this.comboBoxEdit4);
-            this.Controls.Add(this.comboBoxEdit3);
-            this.Controls.Add(this.comboBoxEdit2);
+            this.Controls.Add(this.comboBoxEdit_LaneType4);
+            this.Controls.Add(this.comboBoxEdit_LaneType3);
+            this.Controls.Add(this.comboBoxEdit_LaneType2);
+            this.Controls.Add(this.comboBoxEdit_LaneType1);
             this.Controls.Add(this.checkEdit_Lane4);
             this.Controls.Add(this.checkEdit_Lane3);
             this.Controls.Add(this.checkEdit_Lane2);
@@ -604,14 +604,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit_Lane2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit_Lane3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit_Lane4.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit3.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit4.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit5.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit6.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit7.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit8.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit9.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit_LaneType1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit_LaneType2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit_LaneType3.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit_LaneType4.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit_TrafficLane4.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit_TrafficLane3.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit_TrafficLane2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit_TrafficLane1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit_TrafficLights4.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit_TrafficLights3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit_TrafficLights2.Properties)).EndInit();
@@ -648,14 +648,14 @@
         private DevExpress.XtraEditors.CheckEdit checkEdit_Lane2;
         private DevExpress.XtraEditors.CheckEdit checkEdit_Lane3;
         private DevExpress.XtraEditors.CheckEdit checkEdit_Lane4;
-        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit2;
-        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit3;
-        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit4;
-        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit5;
-        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit6;
-        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit7;
-        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit8;
-        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit9;
+        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit_LaneType1;
+        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit_LaneType2;
+        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit_LaneType3;
+        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit_LaneType4;
+        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit_TrafficLane4;
+        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit_TrafficLane3;
+        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit_TrafficLane2;
+        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit_TrafficLane1;
         private DevExpress.XtraEditors.CheckEdit checkEdit_TrafficLights4;
         private DevExpress.XtraEditors.CheckEdit checkEdit_TrafficLights3;
         private DevExpress.XtraEditors.CheckEdit checkEdit_TrafficLights2;

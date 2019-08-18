@@ -33,6 +33,7 @@ namespace IRVision.Model
         public long HaveLine { get; set; }
         public long LineNumber { get; set; }
         public List<LinePosition> LinePosition { get; set; }
+        public List<string> LaneType { get;set;}
     }
 
     public class LinePosition
